@@ -36,20 +36,21 @@ WIP:
 This Repository was created from the old archive hosted at sourceforge. This
 repo is an ongoing effort to clean that stuff up a bit.
 
-[DONE] unpack all archives, each into a seperate directory
-[DONE] create Makefiles and provide the 3 standard targets for each
-[DONE] create toplevel makefile
+- [DONE] unpack all archives, each into a seperate directory
+- [DONE] create Makefiles and provide the 3 standard targets for each
+- [DONE] create toplevel makefile
 
-[TODO] all included sources should be cleaned from whatever is copied from the
-       standard toolchain/libraries:
+- [TODO] all included sources should be cleaned from whatever is copied from the
+standard toolchain/libraries:
         - defines or complete header files. include the respective header files
-          from the toolchain instead
-[TODO] fix the remaining binaries (see below)
+from the toolchain instead
+- [TODO] fix the remaining binaries (see below)
 
 --------------------------------------------------------------------------------
 
 some programs still need some extra love:
 
+```
 3dmaze-0.2          support TARGET=c128-vdc, atari800, apple2 in Makefile
 circlefracv1-1      support TARGET=c128-vdc, atari800, apple2 in Makefile
 darth-vader         support TARGET=c128-vdc, atari800, apple2 in Makefile
@@ -67,3 +68,4 @@ picoos-demo-0.8.0   the binaries (c64) do not work
 aclock-geos         untested
 
 lynx-cart-demo-1.1  does not build, some things need to be updated
+```
