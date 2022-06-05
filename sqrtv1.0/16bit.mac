@@ -1,0 +1,45 @@
+
+.MACRO inc16 adr
+	inc adr
+	bne :+
+	inc adr+1
+:	
+.ENDMACRO
+
+.MACRO ninc16 adr,n
+.REPEAT n,i
+	inc adr+i
+	bne :+
+	inc adr+1+i
+:
+.ENDREP
+.ENDMACRO
+
+.MACRO ninc adr,n
+.REPEAT n,i
+	inc adr+i
+.ENDREP
+.ENDMACRO
+
+
+.MACRO dec16 adr
+	lda adr
+	bne :+
+	dec adr+1
+:	dec adr
+.ENDMACRO
+
+.MACRO ndec16 adr,n
+.REPEAT n,i
+	lda adr+i
+	bne :+
+	dec adr+i+1
+:	dec adr+i
+.ENDREP
+.ENDMACRO
+
+.MACRO ndec adr,n
+.REPEAT n,i
+	dec adr+i
+.ENDREP
+.ENDMACRO

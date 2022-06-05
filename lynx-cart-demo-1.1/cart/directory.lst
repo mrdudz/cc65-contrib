@@ -1,0 +1,77 @@
+ca65 V2.10.5 - (C) Copyright 1998-2004 Ullrich von Bassewitz
+Main file   : directory.s
+Current file: directory.s
+
+000000r 1               ; The Atari Lynx directory structure
+000000r 1               ; Written for the cc65 compiler by
+000000r 1               ; Karri Kaksonen, 2004
+000000r 1               ;
+000000r 1               	.import __STARTUP_LOAD__
+000000r 1               	.import __STARTUP_SIZE__
+000000r 1               	.import __INIT_SIZE__
+000000r 1               	.import __CODE_LOAD__
+000000r 1               	.import __CODE_SIZE__
+000000r 1               	.import __RODATA_SIZE__
+000000r 1               	.import __DATA_SIZE__
+000000r 1               	.import __LOADER_SIZE__
+000000r 1               	.import __TITLE_START__
+000000r 1               	.import __TITLE_SIZE__
+000000r 1               	.import __INTRO_CODE_LOAD__
+000000r 1               	.import __INTRO_CODE_SIZE__
+000000r 1               	.import __INTRO_DATA_SIZE__
+000000r 1               	.import __INTRO_RODATA_SIZE__
+000000r 1               	.import __SKETCH_CODE_LOAD__
+000000r 1               	.import __SKETCH_CODE_SIZE__
+000000r 1               	.import __SKETCH_DATA_SIZE__
+000000r 1               	.import __SKETCH_RODATA_SIZE__
+000000r 1               
+000000r 1               .segment	"CARTDIR"
+000000r 1               __DIRECTORY_START__:
+000000r 1               
+000000r 1               ; Entry 0 - title sprite (mandatory)
+000000r 1               off0=__LOADER_SIZE__+(__DIRECTORY_END__-__DIRECTORY_START__)
+000000r 1               blocka=off0/1024
+000000r 1               len0=__TITLE_SIZE__
+000000r 1  rr           	.byte	<blocka
+000001r 1  rr rr        	.word	off0 & $3ff
+000003r 1  00           	.byte	$00
+000004r 1  rr rr        	.word	__TITLE_START__
+000006r 1  rr rr        	.word	len0
+000008r 1               
+000008r 1               ; Entry 1 - first executable (mandatory)
+000008r 1               off1=off0+len0
+000008r 1               block1=off1/1024
+000008r 1               len1=__CODE_SIZE__+__RODATA_SIZE__+__DATA_SIZE__
+000008r 1  rr           	.byte	<block1
+000009r 1  rr rr        	.word	off1 & $3ff
+00000Br 1  88           	.byte	$88
+00000Cr 1  rr rr        	.word	__CODE_LOAD__
+00000Er 1  rr rr        	.word	len1
+000010r 1               
+000010r 1               ; You may insert more entries in any format you like
+000010r 1               ; But I continue using the BLL-style entries. They have the length
+000010r 1               ; parameters xored with $ffff
+000010r 1               
+000010r 1               .macro entry old_off, old_len, new_off, new_block, new_len, new_size, new_addr
+000010r 1               new_off=old_off+old_len
+000010r 1               new_block=new_off/1024
+000010r 1               new_len=new_size
+000010r 1               	.byte	<new_block
+000010r 1               	.word	(new_off & $3ff) ^ $ffff
+000010r 1               	.byte	$88
+000010r 1               	.word	new_addr
+000010r 1               	.word	new_len ^ $ffff
+000010r 1               .endmacro
+000010r 1               
+000010r 1               ; The 2nd entry is the entertainment module that we run at startup
+000010r 1  rr rr rr 88  entry off1, len1, off2, block2, len2,__STARTUP_SIZE__+__INIT_SIZE__+__INTRO_CODE_SIZE__+__INTRO_RODATA_SIZE__+__INTRO_DATA_SIZE__, __STARTUP_LOAD__
+000014r 1  rr rr rr rr  
+000018r 1               
+000018r 1               ; The 3rd entry is the 1st game level we want to run.
+000018r 1  rr rr rr 88  entry off2, len2, off3, block3, len3, __SKETCH_CODE_SIZE__+__SKETCH_RODATA_SIZE__+__SKETCH_DATA_SIZE__, __SKETCH_CODE_LOAD__
+00001Cr 1  rr rr rr rr  
+000020r 1               
+000020r 1               ; The 4th entry should come here. It could be the 2nd level to run or data...
+000020r 1               
+000020r 1               __DIRECTORY_END__:
+000020r 1               

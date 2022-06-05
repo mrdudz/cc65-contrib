@@ -1,0 +1,1125 @@
+ca65 V2.10.5 - (C) Copyright 1998-2004 Ullrich von Bassewitz
+Main file   : ../resident/abcmusic.s
+Current file: ../resident/abcmusic.s
+
+000000r 1               ; The abcmusic for the Lynx is based on the abcmusic notation
+000000r 1               ; but the implementation is made by Karri Kaksonen
+000000r 1               ; The idea is that you call update_music at regular intervals
+000000r 1               ; to keep the music going. I usually use a VBL interrupt to tick
+000000r 1               ; the metronome and call the update_music routine every time the
+000000r 1               ; metronome has changed.
+000000r 1               
+000000r 1               ; The Lynx hardware keeps the sound going on without CPU support.
+000000r 1               ; The update_music will just control the fade of notes, change of
+000000r 1               ; notes as the mosic goes on etc.
+000000r 1               
+000000r 1               ; In addition to call update_music frequently you need to define
+000000r 1               ; what to play. Calling "silence" is a good thing to do at startup.
+000000r 1               ; Otherwise some random noise may occur.
+000000r 1               
+000000r 1               ; The last external entry point "abcmusic" needs two parameters:
+000000r 1               ; channel (0..3) and an ASCII string with the tune to play on this
+000000r 1               ; channel.
+000000r 1               
+000000r 1               ; Command reference
+000000r 1               ; | Start of section
+000000r 1               ; :| Repeat section
+000000r 1               ; On, n = 0..6 Octave
+000000r 1               ; Xn, n = 0..511 XOR taps setting
+000000r 1               ; Yn, n = 0..4095 backup setting for XOR taps
+000000r 1               ; In, n = 0..3 Integrate bit 1 waveform bit 2 sweep
+000000r 1               ; Tn, n = 0..255 Tempo
+000000r 1               ; Vn, n = 0..127 Volume
+000000r 1               ; Rn, n = 0..127 Ramp up (Attack)
+000000r 1               ; Hn, n = 0..255 Hold
+000000r 1               ; Kn, n = 0..127 Kill sound (Decay)
+000000r 1               ; =, up half tone
+000000r 1               ; ~, down half tone
+000000r 1               ; CDEFGABcdefgab, notes
+000000r 1               ; z, pause
+000000r 1               ; n[=~][CDEFGABcdefgabz], n = 2,3,4
+000000r 1               
+000000r 1               ; ABC music definition file
+000000r 1               	.include "lynx.inc"
+000000r 1               	.include "../resident/extzp.inc"
+000000r 2               ; Lynx system hardware includes
+000000r 2               ; Shawn Jefferson
+000000r 2               ; June 18th, 2004
+000000r 2               ;
+000000r 2               ; Reference:
+000000r 2               ;  Bastian Schick's Lynx Documentation
+000000r 2               ;  http://www.geocities.com/SiliconValley/Byte/4242/lynx/
+000000r 2               ;
+000000r 2               
+000000r 2               ; ***
+000000r 2               ; *** Suzy Addresses
+000000r 2               ; ***
+000000r 2               
+000000r 2               ; Sprite Control Block
+000000r 2               
+000000r 2               TMPADRL     = $FC00
+000000r 2               TMPADRH     = $FC01
+000000r 2               TILTACUML   = $FC02
+000000r 2               TILTACUMH   = $FC03
+000000r 2               HOFFL       = $FC04
+000000r 2               HOFFH       = $FC05
+000000r 2               VOFFL       = $FC06
+000000r 2               VOFFH       = $FC07
+000000r 2               VIDBASL     = $FC08
+000000r 2               VIDBASH     = $FC09
+000000r 2               COLLBASL    = $FC0A
+000000r 2               COLLBASH    = $FC0B
+000000r 2               VIDADRL     = $FC0C
+000000r 2               VIDADRH     = $FC0D
+000000r 2               COLLADRL    = $FC0E
+000000r 2               COLLADRH    = $FC0F
+000000r 2               SCBNEXTL    = $FC10
+000000r 2               SCBNEXTH    = $FC11
+000000r 2               SPRDLINEL   = $FC12
+000000r 2               SPRDLINEH   = $FC13
+000000r 2               HPOSSTRTL   = $FC14
+000000r 2               HPOSSTRTH   = $FC15
+000000r 2               VPOSSTRTL   = $FC16
+000000r 2               VPOSSTRTH   = $FC17
+000000r 2               SPRHSIZL    = $FC18
+000000r 2               SPRHSIZH    = $FC19
+000000r 2               SPRVSIZL    = $FC1A
+000000r 2               SPRVSIZH    = $FC1B
+000000r 2               STRETCHL    = $FC1C
+000000r 2               STRETCHH    = $FC1D
+000000r 2               TILTL       = $FC1E
+000000r 2               TILTH       = $FC1F
+000000r 2               SPRDOFFL    = $FC20
+000000r 2               SPRDOFFH    = $FC21
+000000r 2               SPRVPOSL    = $FC22
+000000r 2               SPRVPOSH    = $FC23
+000000r 2               COLLOFFL    = $FC24
+000000r 2               COLLOFFH    = $FC25
+000000r 2               VSIZACUML   = $FC26
+000000r 2               VSIZACUMH   = $FC27
+000000r 2               HSIZOFFL    = $FC28
+000000r 2               HSIZOFFH    = $FC29
+000000r 2               VSIZOFFL    = $FC2A
+000000r 2               VSIZOFFH    = $FC2B
+000000r 2               SCBADRL     = $FC2C
+000000r 2               SCBADRH     = $FC2D
+000000r 2               PROCADRL    = $FC2E
+000000r 2               PROCADRH    = $FC2F
+000000r 2               
+000000r 2               ; Suzy Math
+000000r 2               
+000000r 2               MATHD       = $FC52
+000000r 2               MATHC       = $FC53
+000000r 2               MATHB       = $FC54
+000000r 2               MATHA       = $FC55
+000000r 2               MATHP       = $FC56
+000000r 2               MATHN       = $FC57
+000000r 2               MATHH       = $FC60
+000000r 2               MATHG       = $FC61
+000000r 2               MATHF       = $FC62
+000000r 2               MATHE       = $FC63
+000000r 2               MATHM       = $FC6C
+000000r 2               MATHL       = $FC6D
+000000r 2               MATHK       = $FC6E
+000000r 2               MATHJ       = $FC6F
+000000r 2               
+000000r 2               ; Suzy Misc
+000000r 2               
+000000r 2               SPRCTL0     = $FC80
+000000r 2               SPRCTL1     = $FC81
+000000r 2               SPRCOLL     = $FC82
+000000r 2               SPRINIT     = $FC83
+000000r 2               SUZYHREV    = $FC88
+000000r 2               SUZYSREV    = $FC89
+000000r 2               SUZYBUSEN   = $FC90
+000000r 2               SPRGO       = $FC91
+000000r 2               SPRSYS      = $FC92
+000000r 2               JOYSTICK    = $FCB0
+000000r 2               SWITCHES    = $FCB1
+000000r 2               RCART0      = $FCB2
+000000r 2               RCART1      = $FCB3
+000000r 2               LEDS        = $FCC0
+000000r 2               PARSTATUS   = $FCC2
+000000r 2               PARDATA     = $FCC3
+000000r 2               HOWIE       = $FCC4
+000000r 2               
+000000r 2               
+000000r 2               ; ***
+000000r 2               ; *** Mikey Addresses
+000000r 2               ; ***
+000000r 2               
+000000r 2               ; Mikey Timers
+000000r 2               
+000000r 2               TIMER0      = $FD00
+000000r 2               TIMER1      = $FD04
+000000r 2               TIMER2      = $FD08
+000000r 2               TIMER3      = $FD0C
+000000r 2               TIMER4      = $FD10
+000000r 2               TIMER5      = $FD14
+000000r 2               TIMER6      = $FD18
+000000r 2               TIMER7      = $FD1C
+000000r 2               HTIMER      = $FD00             ; horizontal line timer (timer 0)
+000000r 2               VTIMER      = $FD08             ; vertical blank timer (timer 2)
+000000r 2               
+000000r 2               HTIMBKUP    = $FD00             ; horizontal line timer (timer 0)
+000000r 2               HTIMCTLA    = $FD01
+000000r 2               HTIMCNT     = $FD02
+000000r 2               HTIMCTLB    = $FD03
+000000r 2               VTIMBKUP    = $FD08             ; vertical blank timer (timer 2)
+000000r 2               VTIMCTLA    = $FD09
+000000r 2               VTIMCNT     = $FD0A
+000000r 2               VTIMCTLB    = $FD0B
+000000r 2               BAUDBKUP    = $FD10             ; serial timer (timer 4)
+000000r 2               
+000000r 2               TIM0BKUP    = $FD00
+000000r 2               TIM0CTLA    = $FD01
+000000r 2               TIM0CNT     = $FD02
+000000r 2               TIM0CTLB    = $FD03
+000000r 2               TIM1BKUP    = $FD04
+000000r 2               TIM1CTLA    = $FD05
+000000r 2               TIM1CNT     = $FD06
+000000r 2               TIM1CTLB    = $FD07
+000000r 2               TIM2BKUP    = $FD08
+000000r 2               TIM2CTLA    = $FD09
+000000r 2               TIM2CNT     = $FD0A
+000000r 2               TIM2CTLB    = $FD0B
+000000r 2               TIM3BKUP    = $FD0C
+000000r 2               TIM3CTLA    = $FD0D
+000000r 2               TIM3CNT     = $FD0E
+000000r 2               TIM3CTLB    = $FD0F
+000000r 2               TIM4BKUP    = $FD10
+000000r 2               TIM4CTLA    = $FD11
+000000r 2               TIM4CNT     = $FD12
+000000r 2               TIM4CTLB    = $FD13
+000000r 2               TIM5BKUP    = $FD14
+000000r 2               TIM5CTLA    = $FD15
+000000r 2               TIM5CNT     = $FD16
+000000r 2               TIM5CTLB    = $FD17
+000000r 2               TIM6BKUP    = $FD18
+000000r 2               TIM6CTLA    = $FD19
+000000r 2               TIM6CNT     = $FD1A
+000000r 2               TIM6CTLB    = $FD1B
+000000r 2               TIM7BKUP    = $FD1C
+000000r 2               TIM7CTLA    = $FD1D
+000000r 2               TIM7CNT     = $FD1E
+000000r 2               TIM7CTLB    = $FD1F
+000000r 2               
+000000r 2               ; Mikey Audio
+000000r 2               
+000000r 2               AUDIO0      = $FD20             ; audio channel 0
+000000r 2               AUDIO1      = $FD28             ; audio channel 1
+000000r 2               AUDIO2      = $FD30             ; audio channel 2
+000000r 2               AUDIO3      = $FD38             ; audio channel 3
+000000r 2               
+000000r 2               AUD0VOL     = $FD20
+000000r 2               AUD0FEED    = $FD21
+000000r 2               AUD0OUT     = $FD22
+000000r 2               AUD0SHIFT   = $FD23
+000000r 2               AUD0BKUP    = $FD24
+000000r 2               AUD0CTLA    = $FD25
+000000r 2               AUD0CNT     = $FD26
+000000r 2               AUD0CTLB    = $FD27
+000000r 2               AUD1VOL     = $FD28
+000000r 2               AUD1FEED    = $FD29
+000000r 2               AUD1OUT     = $FD2A
+000000r 2               AUD1SHIFT   = $FD2B
+000000r 2               AUD1BKUP    = $FD2C
+000000r 2               AUD1CTLA    = $FD2D
+000000r 2               AUD1CNT     = $FD2E
+000000r 2               AUD1CTLB    = $FD2F
+000000r 2               AUD2VOL     = $FD30
+000000r 2               AUD2FEED    = $FD31
+000000r 2               AUD2OUT     = $FD32
+000000r 2               AUD2SHIFT   = $FD33
+000000r 2               AUD2BKUP    = $FD34
+000000r 2               AUD2CTLA    = $FD35
+000000r 2               AUD2CNT     = $FD36
+000000r 2               AUD2CTLB    = $FD37
+000000r 2               AUD3VOL     = $FD38
+000000r 2               AUD3FEED    = $FD39
+000000r 2               AUD3OUT     = $FD3A
+000000r 2               AUD3SHIFT   = $FD3B
+000000r 2               AUD3BKUP    = $FD3C
+000000r 2               AUD3CTLA    = $FD3D
+000000r 2               AUD3CNT     = $FD3E
+000000r 2               AUD3CTLB    = $FD3F
+000000r 2               MSTEREO     = $FD50
+000000r 2               
+000000r 2               ; Mikey Misc
+000000r 2               
+000000r 2               INTRST      = $FD80
+000000r 2               INTSET      = $FD81
+000000r 2               MAGRDY0     = $FD84
+000000r 2               MAGRDY1     = $FD85
+000000r 2               AUDIN       = $FD86
+000000r 2               SYSCTL1     = $FD87
+000000r 2               MIKEYHREV   = $FD88
+000000r 2               MIKEYSREV   = $FD89
+000000r 2               IODIR       = $FD8A
+000000r 2               IODAT       = $FD8B
+000000r 2               SERCTL      = $FD8C
+000000r 2               SERDAT      = $FD8D
+000000r 2               SDONEACK    = $FD90
+000000r 2               CPUSLEEP    = $FD91
+000000r 2               DISPCTL     = $FD92
+000000r 2               PBKUP       = $FD93
+000000r 2               DISPADRL    = $FD94
+000000r 2               DISPADRH    = $FD95
+000000r 2               MTEST0      = $FD9C
+000000r 2               MTEST1      = $FD9D
+000000r 2               MTEST2      = $FD9E
+000000r 2               PALETTE     = $FDA0                 ; hardware rgb palette
+000000r 2               GCOLMAP     = $FDA0                 ; hardware rgb palette (green)
+000000r 2               RBCOLMAP    = $FDB0                 ; hardware rgb palette (red-blue)
+000000r 2               
+000000r 2               
+000000r 2               ; ***
+000000r 2               ; *** Misc Hardware + 6502 vectors
+000000r 2               ; ***
+000000r 2               
+000000r 2               MAPCTL      = $FFF9
+000000r 2               VECTORS     = $FFFB
+000000r 2               INTVECTL    = $FFFE
+000000r 2               INTVECTH    = $FFFF
+000000r 2               RSTVECTL    = $FFFC
+000000r 2               RSTVECTH    = $FFFD
+000000r 2               NMIVECTL    = $FFFA
+000000r 2               NMIVECTH    = $FFFB
+000000r 2               
+000000r 2               
+000000r 1               	.export _silence
+000000r 2               ;
+000000r 2               ; extzp.inc for the Lynx
+000000r 2               ;
+000000r 2               ; Ullrich von Bassewitz, 2004-11-06
+000000r 2               ;
+000000r 2               ; Assembler include file that imports the runtime zero page locations used
+000000r 2               ; by the Lynx runtime, ready for usage in asm code.
+000000r 2               ;
+000000r 2               
+000000r 2               
+000000r 2                      	.global         __iodat: zp
+000000r 2                       .global         __iodir: zp
+000000r 2                       .global         __viddma: zp
+000000r 2                       .global         __sprsys: zp
+000000r 2               	.global         _abc_score_ptr0: zp
+000000r 2               	.global         _abc_score_ptr1: zp
+000000r 2               	.global         _abc_score_ptr2: zp
+000000r 2               	.global         _abc_score_ptr3: zp
+000000r 2               	.global  	_FileEntry: zp
+000000r 2               	.global  	_FileStartBlock: zp
+000000r 2               	.global  	_FileBlockOffset: zp
+000000r 2               	.global  	_FileExecFlag: zp
+000000r 2               	.global  	_FileDestAddr: zp
+000000r 2               	.global  	_FileFileLen: zp
+000000r 2               	.global  	_FileCurrBlock: zp
+000000r 2               	.global  	_FileBlockByte: zp
+000000r 2               	.global  	_FileDestPtr: zp
+000000r 2               
+000000r 2               
+000000r 2               
+000000r 2               
+000000r 1               	.export _abc_update
+000000r 1               	.export _abcmusic
+000000r 1               	.export _abcinstrument
+000000r 1               	.export _abc_music_ptr
+000000r 1               	.import popax, popa
+000000r 1               	.import _metronome
+000000r 1               
+000000r 1               ; vars for ABC-music
+000000r 1               
+000000r 1               	.rodata
+000000r 1  00           abcsilence:  .byte 0
+000001r 1               
+000001r 1               	.code
+000000r 1               ; Set all scores to silent at startup
+000000r 1               _silence:
+000000r 1  A9 00          lda #$00
+000002r 1  8D 50 FD       sta $fd50 ; all channels to left+right
+000005r 1  A9 rr          lda #<abcsilence
+000007r 1  A0 rr          ldy #>abcsilence
+000009r 1  A2 00          ldx #0
+00000Br 1  20 rr rr       jsr _abc_set_score
+00000Er 1  A9 rr          lda #<abcsilence
+000010r 1  A0 rr          ldy #>abcsilence
+000012r 1  A2 01          ldx #1
+000014r 1  20 rr rr       jsr _abc_set_score
+000017r 1  A9 rr          lda #<abcsilence
+000019r 1  A0 rr          ldy #>abcsilence
+00001Br 1  A2 02          ldx #2
+00001Dr 1  20 rr rr       jsr _abc_set_score
+000020r 1  A9 rr          lda #<abcsilence
+000022r 1  A0 rr          ldy #>abcsilence
+000024r 1  A2 03          ldx #3
+000026r 1  20 rr rr       jsr _abc_set_score
+000029r 1  A9 rr          lda #<abcsilence
+00002Br 1  A0 rr          ldy #>abcsilence
+00002Dr 1  A2 04          ldx #4
+00002Fr 1  4C rr rr       jmp _abc_set_score
+000032r 1               
+000032r 1               ; Read a unsigned interger
+000032r 1               ; A contains low part of nr.
+000032r 1               ; X is channel, Y is music ptr
+000032r 1               abc_read_number:
+000032r 1  9C rr rr       stz abc_tmp
+000035r 1  9C rr rr       stz abc_tmp+1
+000038r 1               @L1:
+000038r 1  20 rr rr       jsr abc_read_char ; Y may be incremented
+00003Br 1  C9 2F          cmp #$2f
+00003Dr 1  90 06          bcc @L2
+00003Fr 1  C9 39          cmp #$39
+000041r 1  B0 06          bcs @L3
+000043r 1  80 09          bra @L5
+000045r 1               @L2:
+000045r 1  C9 00          cmp #0
+000047r 1  F0 01          beq @L4
+000049r 1               @L3:
+000049r 1  88             dey		; It was not 0, decrement music ptr
+00004Ar 1               @L4:
+00004Ar 1  AD rr rr       lda abc_tmp
+00004Dr 1  60             rts
+00004Er 1               @L5:
+00004Er 1  29 0F          and #$0f
+000050r 1  DA             phx		; Save X
+000051r 1  48             pha
+000052r 1  0E rr rr       asl abc_tmp	; multiply by 2
+000055r 1  2E rr rr       rol abc_tmp+1
+000058r 1  AD rr rr       lda abc_tmp
+00005Br 1  AE rr rr       ldx abc_tmp+1
+00005Er 1  0E rr rr       asl abc_tmp	; multiply by 4
+000061r 1  2E rr rr       rol abc_tmp+1
+000064r 1  0E rr rr       asl abc_tmp
+000067r 1  2E rr rr       rol abc_tmp+1 ; multiply by 8
+00006Ar 1  18             clc		; add (multiply by 2) = 10
+00006Br 1  6D rr rr       adc abc_tmp
+00006Er 1  8D rr rr       sta abc_tmp
+000071r 1  8A             txa
+000072r 1  6D rr rr       adc abc_tmp+1
+000075r 1  8D rr rr       sta abc_tmp+1
+000078r 1  68             pla		; add read character
+000079r 1  18             clc
+00007Ar 1  6D rr rr       adc abc_tmp
+00007Dr 1  8D rr rr       sta abc_tmp
+000080r 1  FA             plx		; Restore X
+000081r 1  A9 00          lda #0
+000083r 1  6D rr rr       adc abc_tmp+1
+000086r 1  8D rr rr       sta abc_tmp+1
+000089r 1  80 AD          bra @L1
+00008Br 1               
+00008Br 1               _abcmusic:
+00008Br 1  AD rr rr       lda _metronome
+00008Er 1  AE rr rr       ldx _metronome+1
+000091r 1  CD rr rr       cmp _metronome
+000094r 1  D0 F5          bne _abcmusic
+000096r 1  EC rr rr       cpx _metronome+1
+000099r 1  D0 F0          bne _abcmusic
+00009Br 1  8D rr rr       sta abcmetronome
+00009Er 1  8E rr rr       stx abcmetronome+1
+0000A1r 1  20 rr rr       jsr popax   ; pop string
+0000A4r 1  8D rr rr       sta abc_tmp
+0000A7r 1  8E rr rr       stx abc_tmp+1
+0000AAr 1  20 rr rr       jsr popa   ; pop channel
+0000ADr 1  AA             tax
+0000AEr 1  AD rr rr       lda abc_tmp
+0000B1r 1  AC rr rr       ldy abc_tmp+1
+0000B4r 1               ; Activate score on channel X
+0000B4r 1               ; A - low address
+0000B4r 1               ; Y - high address
+0000B4r 1               _abc_set_score:
+0000B4r 1  E8             inx
+0000B5r 1  CA             dex
+0000B6r 1  D0 0E          bne abc_set_score2
+0000B8r 1  85 rr            sta _abc_score_ptr0
+0000BAr 1  84 rr            sty _abc_score_ptr0+1
+0000BCr 1  8C rr rr         sty abc_repeat_hoffs
+0000BFr 1  9C rr rr         stz _abc_music_ptr
+0000C2r 1  9C rr rr         stz sound_channel_duration
+0000C5r 1  60               rts
+0000C6r 1               abc_set_score2:
+0000C6r 1  CA             dex
+0000C7r 1  D0 0E          bne abc_set_score4
+0000C9r 1  85 rr            sta _abc_score_ptr1
+0000CBr 1  84 rr            sty _abc_score_ptr1+1
+0000CDr 1  8C rr rr         sty abc_repeat_hoffs+1
+0000D0r 1  9C rr rr         stz _abc_music_ptr+1
+0000D3r 1  9C rr rr         stz sound_channel_duration+1
+0000D6r 1  60               rts
+0000D7r 1               abc_set_score4:
+0000D7r 1  CA             dex
+0000D8r 1  D0 0E          bne abc_set_score6
+0000DAr 1  85 rr            sta _abc_score_ptr2
+0000DCr 1  84 rr            sty _abc_score_ptr2+1
+0000DEr 1  8C rr rr         sty abc_repeat_hoffs+2
+0000E1r 1  9C rr rr         stz _abc_music_ptr+2
+0000E4r 1  9C rr rr         stz sound_channel_duration+2
+0000E7r 1  60               rts
+0000E8r 1               abc_set_score6:
+0000E8r 1  85 rr          sta _abc_score_ptr3
+0000EAr 1  84 rr          sty _abc_score_ptr3+1
+0000ECr 1  8C rr rr       sty abc_repeat_hoffs+3
+0000EFr 1  9C rr rr       stz _abc_music_ptr+3
+0000F2r 1  9C rr rr       stz sound_channel_duration+3
+0000F5r 1  60             rts
+0000F6r 1               
+0000F6r 1               ; Once at each frame we can update the music
+0000F6r 1               ; You should call this routine frequently.
+0000F6r 1               ; Once in a frame is a good idea.
+0000F6r 1               _abc_update:
+0000F6r 1  AD rr rr       lda _metronome
+0000F9r 1  AE rr rr       ldx _metronome+1
+0000FCr 1  CD rr rr       cmp _metronome
+0000FFr 1  D0 F5          bne _abc_update
+000101r 1  EC rr rr       cpx _metronome+1
+000104r 1  D0 F0          bne _abc_update
+000106r 1  CD rr rr       cmp abcmetronome
+000109r 1  D0 06          bne @L1
+00010Br 1  EC rr rr       cpx abcmetronome+1
+00010Er 1  D0 01          bne @L1
+000110r 1  60             rts
+000111r 1               @L1:
+000111r 1  8D rr rr       sta abcmetronome
+000114r 1  8E rr rr       stx abcmetronome+1
+000117r 1  A2 00          ldx #0
+000119r 1               update_channel_x:
+000119r 1               
+000119r 1                 ; Decrement steady snd duration, set max_vol to 0 if snd ended
+000119r 1  BD rr rr       lda sound_channel_maxlen,x
+00011Cr 1  F0 06          beq update_music1
+00011Er 1  3A               dea
+00011Fr 1  9D rr rr         sta sound_channel_maxlen,x
+000122r 1  D0 03            bne update_decay
+000124r 1               update_music1:
+000124r 1  9D rr rr           sta sound_channel_max_volume,x
+000127r 1               
+000127r 1                 ; Decay sound
+000127r 1               update_decay:
+000127r 1  BD rr rr       lda sound_channel_max_volume,x
+00012Ar 1  D0 0F          bne update_attack
+00012Cr 1                   ; silence
+00012Cr 1  BD rr rr         lda sound_channel_volume,x
+00012Fr 1  F0 32            beq update_duration
+000131r 1                     ; decay time still going on
+000131r 1  38                 sec
+000132r 1  FD rr rr           sbc abc_instrument_decr,x
+000135r 1  B0 1A              bcs update_set_vol
+000137r 1                       ; silence
+000137r 1  A9 00                lda #0
+000139r 1  80 16              bra update_set_vol
+00013Br 1               
+00013Br 1                 ; Attack sound
+00013Br 1               update_attack:
+00013Br 1  BD rr rr       lda sound_channel_volume,x
+00013Er 1  DD rr rr       cmp sound_channel_max_volume,x
+000141r 1  F0 20          beq update_duration
+000143r 1                   ; attack time
+000143r 1  18               clc
+000144r 1  7D rr rr         adc abc_instrument_incr,x
+000147r 1  B0 05            bcs update_music3
+000149r 1  DD rr rr         cmp sound_channel_max_volume,x
+00014Cr 1  90 03            bcc update_set_vol
+00014Er 1               update_music3:
+00014Er 1                     ; desired volume reached
+00014Er 1  BD rr rr           lda sound_channel_max_volume,x
+000151r 1               
+000151r 1                 ; Set volume
+000151r 1               update_set_vol:
+000151r 1  9D rr rr       sta sound_channel_volume,x
+000154r 1  DA             phx
+000155r 1  48             pha
+000156r 1  8A             txa
+000157r 1  18             clc
+000158r 1  2A             rol
+000159r 1  18             clc
+00015Ar 1  2A             rol
+00015Br 1  18             clc
+00015Cr 1  2A             rol
+00015Dr 1  AA             tax
+00015Er 1  68             pla
+00015Fr 1  9D 20 FD       sta $fd20,x
+000162r 1  FA             plx
+000163r 1               
+000163r 1                 ; Decrement duration of note
+000163r 1               update_duration:
+000163r 1  BD rr rr       lda sound_channel_duration,x
+000166r 1  F0 06          beq update_music4
+000168r 1  3A               dea
+000169r 1  9D rr rr         sta sound_channel_duration,x
+00016Cr 1  80 07            bra update_music5
+00016Er 1               update_music4:
+00016Er 1                   ; note has ended, fetch next
+00016Er 1  BD rr rr         lda _abc_music_ptr,x
+000171r 1  A8               tay
+000172r 1  20 rr rr         jsr parse_abc
+000175r 1               
+000175r 1               update_music5:
+000175r 1  E8             inx
+000176r 1  8A             txa
+000177r 1  C9 04          cmp #4
+000179r 1  D0 9E          bne update_channel_x
+00017Br 1  60             rts
+00017Cr 1               
+00017Cr 1               ; Parse score enough to get next note
+00017Cr 1               ; X - channel to use
+00017Cr 1               ; Y - abc music pointer
+00017Cr 1               parse_abc:
+00017Cr 1  20 rr rr       jsr abc_read_char
+00017Fr 1  C9 00          cmp #$0 ; End of music
+000181r 1  D0 01          bne parse_abc1
+000183r 1  60               rts
+000184r 1               parse_abc1:
+000184r 1  C9 20          cmp #$20 ;' ' ignore spaces
+000186r 1  D0 02          bne parse_abc2
+000188r 1  80 F2            bra parse_abc
+00018Ar 1               parse_abc2:
+00018Ar 1  C9 7C          cmp #$7c ;'|'
+00018Cr 1  D0 20          bne parse_abc6
+00018Er 1  20 rr rr         jsr abc_read_char
+000191r 1  C9 3A            cmp #$3a ;':'
+000193r 1  D0 15            bne parse_abc4
+000195r 1  98                 tya
+000196r 1  9D rr rr           sta abc_repeat_offs,x
+000199r 1  DA                 phx
+00019Ar 1  8A                 txa
+00019Br 1  0A                 asl
+00019Cr 1  AA                 tax
+00019Dr 1  B5 rr              lda _abc_score_ptr0+1,x
+00019Fr 1  FA                 plx
+0001A0r 1  9D rr rr           sta abc_repeat_hoffs,x
+0001A3r 1  A9 02              lda #2
+0001A5r 1  9D rr rr           sta abc_repeat_cnt,x
+0001A8r 1  80 01            bra parse_abc5
+0001AAr 1               parse_abc4:
+0001AAr 1  88                 dey
+0001ABr 1               parse_abc5:
+0001ABr 1  4C rr rr         jmp parse_abc
+0001AEr 1               parse_abc6:
+0001AEr 1  C9 3A          cmp #$3a ;':'
+0001B0r 1  D0 23          bne parse_abc7
+0001B2r 1  BD rr rr         lda abc_repeat_cnt,x
+0001B5r 1  3A               dea
+0001B6r 1  9D rr rr         sta abc_repeat_cnt,x
+0001B9r 1  F0 1A            beq parse_abc7
+0001BBr 1  5A                 phy
+0001BCr 1  BD rr rr           lda abc_repeat_hoffs,x
+0001BFr 1  48                 pha
+0001C0r 1  8A                 txa
+0001C1r 1  0A                 asl
+0001C2r 1  AA                 tax
+0001C3r 1  68                 pla
+0001C4r 1  95 rr              sta _abc_score_ptr0+1,x
+0001C6r 1  8A                 txa
+0001C7r 1  18                 clc
+0001C8r 1  6A                 ror
+0001C9r 1  AA                 tax
+0001CAr 1  BD rr rr           lda abc_repeat_offs,x
+0001CDr 1  A8                 tay
+0001CEr 1  68                 pla
+0001CFr 1  9D rr rr           sta abc_repeat_offs,x
+0001D2r 1  4C rr rr           jmp parse_abc
+0001D5r 1               parse_abc7:
+0001D5r 1  C9 56          cmp #'V' ; volume
+0001D7r 1  D0 09          bne parse_abc8
+0001D9r 1  20 rr rr         jsr abc_read_number
+0001DCr 1  9D rr rr         sta abc_note_volume,x
+0001DFr 1  4C rr rr         jmp parse_abc
+0001E2r 1               parse_abc8:
+0001E2r 1  C9 52          cmp #'R' ; ramp up
+0001E4r 1  D0 09          bne parse_abc8a
+0001E6r 1  20 rr rr         jsr abc_read_number
+0001E9r 1  9D rr rr         sta abc_instrument_incr,x
+0001ECr 1  4C rr rr         jmp parse_abc
+0001EFr 1               parse_abc8a:
+0001EFr 1  C9 48          cmp #'H' ; hold
+0001F1r 1  D0 09          bne parse_abc8b
+0001F3r 1  20 rr rr         jsr abc_read_number
+0001F6r 1  9D rr rr         sta abc_instrument_maxlen,x
+0001F9r 1  4C rr rr         jmp parse_abc
+0001FCr 1               parse_abc8b:
+0001FCr 1  C9 4B          cmp #'K' ; kill sound
+0001FEr 1  D0 09          bne parse_abc8c
+000200r 1  20 rr rr         jsr abc_read_number
+000203r 1  9D rr rr         sta abc_instrument_decr,x
+000206r 1  4C rr rr         jmp parse_abc
+000209r 1               parse_abc8c:
+000209r 1  C9 49          cmp #'I' ; incremental flag
+00020Br 1  D0 28          bne parse_abc9
+00020Dr 1  20 rr rr         jsr abc_read_number
+000210r 1  DA               phx
+000211r 1  8A               txa
+000212r 1  18               clc
+000213r 1  2A               rol
+000214r 1  18               clc
+000215r 1  2A               rol
+000216r 1  18               clc
+000217r 1  2A               rol
+000218r 1  AA               tax
+000219r 1  AD rr rr         lda abc_tmp
+00021Cr 1  C9 00            cmp #0
+00021Er 1  D0 07            bne parse_abc8d
+000220r 1  BD 25 FD           lda $fd25,x
+000223r 1  29 DF              and #$df
+000225r 1  80 05            bra parse_abc8e
+000227r 1               parse_abc8d:
+000227r 1  BD 25 FD           lda $fd25,x
+00022Ar 1  09 20              ora #$20
+00022Cr 1               parse_abc8e:
+00022Cr 1  09 18            ora #$18
+00022Er 1  9D 25 FD         sta $fd25,x
+000231r 1  FA               plx
+000232r 1  4C rr rr         jmp parse_abc
+000235r 1               parse_abc9:
+000235r 1  C9 54          cmp #$54 ;'T' tempo
+000237r 1  D0 09          bne parse_abc9b
+000239r 1  20 rr rr         jsr abc_read_number
+00023Cr 1  9D rr rr         sta abc_note_length,x
+00023Fr 1  4C rr rr         jmp parse_abc
+000242r 1               parse_abc9b:
+000242r 1  C9 4F          cmp #$4f ;'O' octave
+000244r 1  D0 1D          bne parse_abc9c
+000246r 1  20 rr rr         jsr abc_read_number
+000249r 1  DA               phx
+00024Ar 1  8A               txa
+00024Br 1  18               clc
+00024Cr 1  2A               rol
+00024Dr 1  18               clc
+00024Er 1  2A               rol
+00024Fr 1  18               clc
+000250r 1  2A               rol
+000251r 1  AA               tax
+000252r 1  BD 25 FD         lda $fd25,x
+000255r 1  29 F8            and #$f8
+000257r 1  09 18            ora #$18
+000259r 1  0D rr rr         ora abc_tmp
+00025Cr 1  9D 25 FD         sta $fd25,x
+00025Fr 1  FA               plx
+000260r 1  4C rr rr         jmp parse_abc
+000263r 1               parse_abc9c:
+000263r 1  C9 58          cmp #'X'; XOR taps
+000265r 1  D0 46          bne parse_abc10
+000267r 1  20 rr rr         jsr abc_read_number
+00026Ar 1  DA               phx
+00026Br 1  8A               txa ; modify X to point to sound channel
+00026Cr 1  18               clc
+00026Dr 1  2A               rol
+00026Er 1  18               clc
+00026Fr 1  2A               rol
+000270r 1  18               clc
+000271r 1  2A               rol
+000272r 1  AA               tax
+000273r 1  AD rr rr         lda abc_tmp
+000276r 1                   ; The two topmost bits are shifted one place right
+000276r 1  10 04            bpl parse_abc9d
+000278r 1  09 40              ora #$40
+00027Ar 1  80 02            bra parse_abc9e
+00027Cr 1               parse_abc9d:
+00027Cr 1  29 BF              and #$bf
+00027Er 1               parse_abc9e:
+00027Er 1  CE rr rr         dec abc_tmp+1
+000281r 1  F0 04            beq parse_abc9f
+000283r 1  29 7F              and #$7f
+000285r 1  80 02            bra parse_abc9g
+000287r 1               parse_abc9f:
+000287r 1  09 80              ora #$80
+000289r 1               parse_abc9g:
+000289r 1  9D 21 FD         sta $fd21,x
+00028Cr 1                   ; Bit $40 is put in a different register
+00028Cr 1  AD rr rr         lda abc_tmp
+00028Fr 1  29 40            and #$40
+000291r 1  D0 07            bne parse_abc9h
+000293r 1  BD 25 FD           lda $fd25,x
+000296r 1  29 7F              and #$7f
+000298r 1  80 05            bra parse_abc9i
+00029Ar 1               parse_abc9h:
+00029Ar 1  BD 25 FD           lda $fd25,x
+00029Dr 1  09 80              ora #$80
+00029Fr 1               parse_abc9i:
+00029Fr 1  09 18            ora #$18
+0002A1r 1  9D 25 FD         sta $fd25,x
+0002A4r 1  A9 00            lda #0
+0002A6r 1  9D 23 FD         sta $fd23,x
+0002A9r 1  FA               plx
+0002AAr 1  4C rr rr         jmp parse_abc
+0002ADr 1               parse_abc10:
+0002ADr 1  C9 59          cmp #'Y'; XOR taps
+0002AFr 1  D0 30          bne parse_abc10a
+0002B1r 1  20 rr rr         jsr abc_read_number
+0002B4r 1  DA               phx
+0002B5r 1  8A               txa ; modify X to point to sound channel
+0002B6r 1  18               clc
+0002B7r 1  2A               rol
+0002B8r 1  18               clc
+0002B9r 1  2A               rol
+0002BAr 1  18               clc
+0002BBr 1  2A               rol
+0002BCr 1  AA               tax
+0002BDr 1  BD 25 FD       lda $fd25,x
+0002C0r 1  29 F7          and #$f7
+0002C2r 1  9D 25 FD       sta $fd25,x
+0002C5r 1  AD rr rr         lda abc_tmp
+0002C8r 1  9D 23 FD         sta $fd23,x
+0002CBr 1  AD rr rr         lda abc_tmp+1
+0002CEr 1  0A               asl
+0002CFr 1  0A               asl
+0002D0r 1  0A               asl
+0002D1r 1  0A               asl
+0002D2r 1  9D 27 FD         sta $fd27,x
+0002D5r 1  BD 25 FD       lda $fd25,x
+0002D8r 1  09 08          ora #$08
+0002DAr 1  9D 25 FD       sta $fd25,x
+0002DDr 1  FA               plx
+0002DEr 1  4C rr rr         jmp parse_abc
+0002E1r 1               parse_abc10a:
+0002E1r 1  C9 7A          cmp #$7a ;'z'
+0002E3r 1  D0 05          bne parse_abc11
+0002E5r 1  A9 00            lda #0
+0002E7r 1  4C rr rr         jmp set_music_ptr
+0002EAr 1               parse_abc11:
+0002EAr 1                 ; Find out the pitch of the note
+0002EAr 1  9C rr rr       stz cur_note
+0002EDr 1  EE rr rr       inc cur_note
+0002F0r 1  C9 5E          cmp #'^';
+0002F2r 1  D0 06          bne parse_abc12
+0002F4r 1  EE rr rr         inc cur_note
+0002F7r 1  20 rr rr         jsr abc_read_char
+0002FAr 1               parse_abc12:
+0002FAr 1  C9 5F          cmp #'_';
+0002FCr 1  D0 06          bne parse_abc13
+0002FEr 1  CE rr rr         dec cur_note
+000301r 1  20 rr rr         jsr abc_read_char
+000304r 1               parse_abc13:
+000304r 1  38             sec
+000305r 1  E9 41          sbc #$41 ;'A'
+000307r 1  C9 08          cmp #8 ;'H'-'A'
+000309r 1  B0 0B          bcs parse_abc14 ;_IFLO
+00030Br 1  18               clc
+00030Cr 1  0A               asl
+00030Dr 1  18               clc
+00030Er 1  6D rr rr         adc cur_note
+000311r 1  8D rr rr         sta cur_note
+000314r 1  80 0F          bra parse_abc15
+000316r 1               parse_abc14:
+000316r 1  38               sec
+000317r 1  E9 20            sbc #$20 ;'a'-'A' + 15
+000319r 1  18               clc
+00031Ar 1  0A               asl
+00031Br 1  18               clc
+00031Cr 1  6D rr rr         adc cur_note
+00031Fr 1  18               clc
+000320r 1  69 0F            adc #15
+000322r 1  8D rr rr         sta cur_note
+000325r 1               parse_abc15:
+000325r 1  AD rr rr       lda cur_note
+000328r 1  18             clc
+000329r 1  69 0F          adc #15
+00032Br 1  8D rr rr       sta cur_note
+00032Er 1  20 rr rr       jsr abc_taste_char
+000331r 1  C9 27          cmp #$27 ; '''
+000333r 1  D0 0E          bne @L1
+000335r 1  20 rr rr       jsr abc_read_char
+000338r 1  A9 0F          lda #15
+00033Ar 1  18             clc
+00033Br 1  6D rr rr       adc cur_note
+00033Er 1  8D rr rr       sta cur_note
+000341r 1  80 10          bra @L3
+000343r 1               @L1:
+000343r 1  C9 2C          cmp #','
+000345r 1  D0 0C          bne @L3
+000347r 1  20 rr rr       jsr abc_read_char
+00034Ar 1  AD rr rr       lda cur_note
+00034Dr 1  38             sec
+00034Er 1  E9 0F          sbc #15
+000350r 1  8D rr rr       sta cur_note
+000353r 1               @L3:
+000353r 1  AD rr rr       lda cur_note
+000356r 1  5A             phy
+000357r 1  A8             tay
+000358r 1  B9 rr rr       lda _delays,y
+00035Br 1  DA             phx
+00035Cr 1  48             pha
+00035Dr 1  8A             txa
+00035Er 1  18             clc
+00035Fr 1  2A             rol
+000360r 1  18             clc
+000361r 1  2A             rol
+000362r 1  18             clc
+000363r 1  2A             rol
+000364r 1  AA             tax
+000365r 1  68             pla
+000366r 1  9D 24 FD       sta $fd24,x
+000369r 1  FA             plx
+00036Ar 1  7A             ply
+00036Br 1                 ; Find out the volume of the note
+00036Br 1  BD rr rr       lda abc_note_volume,x
+00036Er 1               set_music_ptr:
+00036Er 1  9D rr rr       sta sound_channel_max_volume,x
+000371r 1                 ; Find out the duration of the note
+000371r 1  20 rr rr       jsr abc_read_number
+000374r 1  48             pha
+000375r 1  AD rr rr       lda abc_tmp
+000378r 1  D0 01          bne @L1
+00037Ar 1  1A             ina
+00037Br 1               @L1:
+00037Br 1  5A             phy
+00037Cr 1  A8             tay
+00037Dr 1  A9 00          lda #0
+00037Fr 1               @L2:
+00037Fr 1  18             clc
+000380r 1  7D rr rr       adc abc_note_length,x
+000383r 1  88             dey
+000384r 1  D0 F9          bne @L2
+000386r 1  9D rr rr       sta sound_channel_duration,x
+000389r 1  7A             ply
+00038Ar 1  68             pla
+00038Br 1  98             tya
+00038Cr 1  9D rr rr       sta _abc_music_ptr,x
+00038Fr 1  BD rr rr       lda abc_instrument_maxlen,x
+000392r 1  9D rr rr       sta sound_channel_maxlen,x
+000395r 1  60             rts
+000396r 1               
+000396r 1               ; Read a character from the score. Advance ptr if it is not 0
+000396r 1               ; X - channel
+000396r 1               ; Y - score offset
+000396r 1               abc_read_char:
+000396r 1  8A             txa
+000397r 1  1A             ina
+000398r 1  3A             dea
+000399r 1  D0 0E          bne @L33
+00039Br 1  B1 rr            lda (_abc_score_ptr0),y
+00039Dr 1  8D rr rr         sta abc_tmp+2
+0003A0r 1  D0 01            bne @L31
+0003A2r 1  60               rts
+0003A3r 1               @L31:
+0003A3r 1  C8               iny
+0003A4r 1  D0 02            bne @L32
+0003A6r 1  E6 rr              inc _abc_score_ptr0+1
+0003A8r 1               @L32:
+0003A8r 1  60               rts
+0003A9r 1               @L33:
+0003A9r 1  3A             dea
+0003AAr 1  D0 0E          bne @L36
+0003ACr 1  B1 rr            lda (_abc_score_ptr1),y
+0003AEr 1  8D rr rr         sta abc_tmp+2
+0003B1r 1  D0 01            bne @L34
+0003B3r 1  60               rts
+0003B4r 1               @L34:
+0003B4r 1  C8               iny
+0003B5r 1  D0 02            bne @L35
+0003B7r 1  E6 rr              inc _abc_score_ptr1+1
+0003B9r 1               @L35:
+0003B9r 1  60               rts
+0003BAr 1               @L36:
+0003BAr 1  3A             dea
+0003BBr 1  D0 0E          bne @L39
+0003BDr 1  B1 rr            lda (_abc_score_ptr2),y
+0003BFr 1  8D rr rr         sta abc_tmp+2
+0003C2r 1  D0 01            bne @L37
+0003C4r 1  60               rts
+0003C5r 1               @L37:
+0003C5r 1  C8               iny
+0003C6r 1  D0 02            bne @L38
+0003C8r 1  E6 rr              inc _abc_score_ptr2+1
+0003CAr 1               @L38:
+0003CAr 1  60               rts
+0003CBr 1               @L39:
+0003CBr 1  B1 rr            lda (_abc_score_ptr3),y
+0003CDr 1  8D rr rr         sta abc_tmp+2
+0003D0r 1  D0 01            bne @L310
+0003D2r 1  60               rts
+0003D3r 1               @L310:
+0003D3r 1  C8               iny
+0003D4r 1  D0 02            bne @L311
+0003D6r 1  E6 rr              inc _abc_score_ptr3+1
+0003D8r 1               @L311:
+0003D8r 1  60               rts
+0003D9r 1               
+0003D9r 1               ; Read a character from the score.
+0003D9r 1               ; X - channel
+0003D9r 1               ; Y - score offset
+0003D9r 1               abc_taste_char:
+0003D9r 1  8A             txa
+0003DAr 1  1A             ina
+0003DBr 1  3A             dea
+0003DCr 1  D0 06          bne @L53
+0003DEr 1  B1 rr            lda (_abc_score_ptr0),y
+0003E0r 1  8D rr rr         sta abc_tmp+2
+0003E3r 1  60               rts
+0003E4r 1               @L53:
+0003E4r 1  3A             dea
+0003E5r 1  D0 06          bne @L56
+0003E7r 1  B1 rr            lda (_abc_score_ptr1),y
+0003E9r 1  8D rr rr         sta abc_tmp+2
+0003ECr 1  60               rts
+0003EDr 1               @L56:
+0003EDr 1  3A             dea
+0003EEr 1  D0 06          bne @L59
+0003F0r 1  B1 rr            lda (_abc_score_ptr2),y
+0003F2r 1  8D rr rr         sta abc_tmp+2
+0003F5r 1  60               rts
+0003F6r 1               @L59:
+0003F6r 1  B1 rr            lda (_abc_score_ptr3),y
+0003F8r 1  8D rr rr         sta abc_tmp+2
+0003FBr 1  60               rts
+0003FCr 1               
+0003FCr 1               ; Instrument setup. C-interface
+0003FCr 1               _abcinstrument:
+0003FCr 1                 ; Read the channel number
+0003FCr 1  20 rr rr       jsr popa
+0003FFr 1  8D rr rr       sta channel_nr
+000402r 1  18             clc
+000403r 1  2A             rol
+000404r 1  18             clc
+000405r 1  2A             rol
+000406r 1  18             clc
+000407r 1  2A             rol
+000408r 1  8D rr rr       sta channel_offs
+00040Br 1               
+00040Br 1                 ; Disable count
+00040Br 1  BD 25 FD       lda $fd25,x
+00040Er 1  29 F7          and #$f7
+000410r 1  9D 25 FD       sta $fd25,x
+000413r 1               
+000413r 1                 ; Read byte containing taps register bits 012345 10 11
+000413r 1  20 rr rr       jsr popa
+000416r 1  AE rr rr       ldx channel_offs
+000419r 1  9D 21 FD       sta $fd21,x
+00041Cr 1               
+00041Cr 1                 ; $fd22,x contains the audio output value
+00041Cr 1               
+00041Cr 1                 ; Read byte containing backup register bits 01234567
+00041Cr 1  20 rr rr       jsr popa
+00041Fr 1  AE rr rr       ldx channel_offs
+000422r 1  9D 23 FD       sta $fd23,x
+000425r 1               
+000425r 1                 ; $fd24,x contains the audio timer backup value = note
+000425r 1               
+000425r 1                 ; Read byte containing backup register bits 89 10 11
+000425r 1  20 rr rr       jsr popa
+000428r 1  AE rr rr       ldx channel_offs
+00042Br 1  9D 27 FD       sta $fd27,x
+00042Er 1               
+00042Er 1                 ; Read audio control byte bits octave 012 integrate 5 taps 7
+00042Er 1                 ; This also enables counts again
+00042Er 1  20 rr rr       jsr popa
+000431r 1  AE rr rr       ldx channel_offs
+000434r 1  9D 25 FD       sta $fd25,x
+000437r 1               
+000437r 1                 ; Enable count
+000437r 1  BD 25 FD       lda $fd25,x
+00043Ar 1  09 08          ora #$08
+00043Cr 1  9D 25 FD       sta $fd25,x
+00043Fr 1               
+00043Fr 1                 ; Read tempo
+00043Fr 1  20 rr rr       jsr popa
+000442r 1  AE rr rr       ldx channel_nr
+000445r 1  9D rr rr       sta abc_note_length,x
+000448r 1               
+000448r 1                 ; Read volume
+000448r 1  20 rr rr       jsr popa
+00044Br 1  AE rr rr       ldx channel_nr
+00044Er 1  9D rr rr       sta abc_note_volume,x
+000451r 1               
+000451r 1                 ; Read attack
+000451r 1  20 rr rr       jsr popa
+000454r 1  AE rr rr       ldx channel_nr
+000457r 1  9D rr rr       sta abc_instrument_incr,x
+00045Ar 1               
+00045Ar 1                 ; Read hold
+00045Ar 1  20 rr rr       jsr popa
+00045Dr 1  AE rr rr       ldx channel_nr
+000460r 1  9D rr rr       sta abc_instrument_maxlen,x
+000463r 1               
+000463r 1                 ; Read decay
+000463r 1  20 rr rr       jsr popa
+000466r 1  AE rr rr       ldx channel_nr
+000469r 1  9D rr rr       sta abc_instrument_decr,x
+00046Cr 1  60             rts
+00046Dr 1               
+00046Dr 1               	.data
+000000r 1  xx xx        abcmetronome: .res 2
+000002r 1  xx xx        instrumenttmp: .res 2
+000004r 1  xx           channel_offs: .res 1
+000005r 1  xx           channel_nr: .res 1
+000006r 1  00 00 00 00  _abc_music_ptr:   .byte 0,0,0,0
+00000Ar 1  00 00 00 00  abc_repeat_offs: .byte 0,0,0,0
+00000Er 1  00 00 00 00  abc_repeat_hoffs: .byte 0,0,0,0
+000012r 1  00 00 00 00  abc_repeat_cnt:  .byte 0,0,0,0
+000016r 1  00 00 00 00  sound_channel_duration: .byte 0,0,0,0
+00001Ar 1  06 06 06 06  abc_note_length: .byte 6,6,6,6
+00001Er 1  40 40 40 40  abc_note_volume: .byte 64,64,64,64
+000022r 1  04 04 04 04  abc_instrument_incr:   .byte 4,4,4,4
+000026r 1  04 04 04 04  abc_instrument_maxlen: .byte 4,4,4,4
+00002Ar 1  04 04 04 04  abc_instrument_decr:   .byte 4,4,4,4
+00002Er 1  3C 7F 7F 7F  sound_channel_max_volume: .byte 60,127,127,127
+000032r 1  04 04 04 04  sound_channel_volume:   .byte 4,4,4,4
+000036r 1  04 04 04 04  sound_channel_maxlen:   .byte 4,4,4,4
+00003Ar 1  00           cur_note:    .byte 0
+00003Br 1  xx xx xx     abc_tmp: .res 3
+00003Er 1               
+00003Er 1               	.rodata
+000001r 1               ; This table is used to cover the delays needed for 4 octaves
+000001r 1               ; These values work when the looplen is 2, 4, 8, 16...
+000001r 1  97           _delays: .byte 151 ; _A,
+000002r 1  8E                   .byte 142 ; A,
+000003r 1  86                   .byte 134 ; ^A, _B,
+000004r 1  7F                   .byte 127 ; B,
+000005r 1  77                   .byte 119 ;
+000006r 1  EF                   .byte 239 ; C,
+000007r 1  E1                   .byte 225 ; ^C, _D,
+000008r 1  D5                   .byte 213 ; D,
+000009r 1  C9                   .byte 201 ; ^D, _E,
+00000Ar 1  BE                   .byte 190 ; E,
+00000Br 1  B3                   .byte 179 ;
+00000Cr 1  B3                   .byte 179 ; F,
+00000Dr 1  A9                   .byte 169 ; ^F, _G,
+00000Er 1  9F                   .byte 159 ; G,
+00000Fr 1  97                   .byte 151 ; ^G,
+000010r 1               
+000010r 1  4B                   .byte  75 ; _A
+000011r 1  47                   .byte  71 ; A
+000012r 1  43                   .byte  67 ; ^A _B
+000013r 1  3F                   .byte  63 ; B
+000014r 1  3C                   .byte  60 ;
+000015r 1  77                   .byte 119 ; C
+000016r 1  71                   .byte 113 ; ^C _D
+000017r 1  6A                   .byte 106 ; D
+000018r 1  64                   .byte 100 ; ^D _E
+000019r 1  5F                   .byte  95 ; E
+00001Ar 1  59                   .byte  89 ;
+00001Br 1  59                   .byte  89 ; F
+00001Cr 1  54                   .byte  84 ; ^F _G
+00001Dr 1  50                   .byte  80 ; G
+00001Er 1  4B                   .byte  75 ; ^G
+00001Fr 1               
+00001Fr 1  26                   .byte  38 ; _a
+000020r 1  24                   .byte  36 ; a
+000021r 1  22                   .byte  34 ; ^a _b
+000022r 1  20                   .byte  32 ; b
+000023r 1  1E                   .byte  30 ;
+000024r 1  3C                   .byte  60 ; c
+000025r 1  38                   .byte  56 ; ^c _d
+000026r 1  35                   .byte  53 ; d
+000027r 1  32                   .byte  50 ; ^d _e
+000028r 1  2F                   .byte  47 ; e
+000029r 1  2D                   .byte  45 ;
+00002Ar 1  2D                   .byte  45 ; f
+00002Br 1  2A                   .byte  42 ; ^f _g
+00002Cr 1  28                   .byte  40 ; g
+00002Dr 1  26                   .byte  38 ; ^g
+00002Er 1               
+00002Er 1  13                   .byte  19 ; _a'
+00002Fr 1  12                   .byte  18 ; a'
+000030r 1  11                   .byte  17 ; ^a' _b'
+000031r 1  10                   .byte  16 ; b'
+000032r 1  0F                   .byte  15 ;
+000033r 1  1E                   .byte  30 ; c'
+000034r 1  1C                   .byte  28 ; ^c' _d'
+000035r 1  1B                   .byte  27 ; d'
+000036r 1  19                   .byte  25 ; ^d' _e'
+000037r 1  18                   .byte  24 ; e'
+000038r 1  16                   .byte  22 ;
+000039r 1  16                   .byte  22 ; f'
+00003Ar 1  15                   .byte  21 ; ^f' _g'
+00003Br 1  14                   .byte  20 ; g'
+00003Cr 1  13                   .byte  19 ; ^g'
+00003Dr 1               
+00003Dr 1               

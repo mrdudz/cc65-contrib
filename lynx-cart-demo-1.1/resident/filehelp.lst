@@ -1,0 +1,384 @@
+ca65 V2.10.5 - (C) Copyright 1998-2004 Ullrich von Bassewitz
+Main file   : ../resident/filehelp.s
+Current file: ../resident/filehelp.s
+
+000000r 1               ; ***
+000000r 1               ; CC65 Lynx Library
+000000r 1               ;
+000000r 1               ; Originally by Bastian Schick
+000000r 1               ; http://www.geocities.com/SiliconValley/Byte/4242/lynx/
+000000r 1               ;
+000000r 1               ; Ported to cc65 (http://www.cc65.org) by
+000000r 1               ; Shawn Jefferson, June 2004
+000000r 1               ;
+000000r 1               ; ***
+000000r 1               ;
+000000r 1               ; Helper stuff for the cartridge file functions.
+000000r 1               
+000000r 1               	.include "lynx.inc"
+000000r 1               	.include "../resident/extzp.inc"
+000000r 2               ; Lynx system hardware includes
+000000r 2               ; Shawn Jefferson
+000000r 2               ; June 18th, 2004
+000000r 2               ;
+000000r 2               ; Reference:
+000000r 2               ;  Bastian Schick's Lynx Documentation
+000000r 2               ;  http://www.geocities.com/SiliconValley/Byte/4242/lynx/
+000000r 2               ;
+000000r 2               
+000000r 2               ; ***
+000000r 2               ; *** Suzy Addresses
+000000r 2               ; ***
+000000r 2               
+000000r 2               ; Sprite Control Block
+000000r 2               
+000000r 2               TMPADRL     = $FC00
+000000r 2               TMPADRH     = $FC01
+000000r 2               TILTACUML   = $FC02
+000000r 2               TILTACUMH   = $FC03
+000000r 2               HOFFL       = $FC04
+000000r 2               HOFFH       = $FC05
+000000r 2               VOFFL       = $FC06
+000000r 2               VOFFH       = $FC07
+000000r 2               VIDBASL     = $FC08
+000000r 2               VIDBASH     = $FC09
+000000r 2               COLLBASL    = $FC0A
+000000r 2               COLLBASH    = $FC0B
+000000r 2               VIDADRL     = $FC0C
+000000r 2               VIDADRH     = $FC0D
+000000r 2               COLLADRL    = $FC0E
+000000r 2               COLLADRH    = $FC0F
+000000r 2               SCBNEXTL    = $FC10
+000000r 2               SCBNEXTH    = $FC11
+000000r 2               SPRDLINEL   = $FC12
+000000r 2               SPRDLINEH   = $FC13
+000000r 2               HPOSSTRTL   = $FC14
+000000r 2               HPOSSTRTH   = $FC15
+000000r 2               VPOSSTRTL   = $FC16
+000000r 2               VPOSSTRTH   = $FC17
+000000r 2               SPRHSIZL    = $FC18
+000000r 2               SPRHSIZH    = $FC19
+000000r 2               SPRVSIZL    = $FC1A
+000000r 2               SPRVSIZH    = $FC1B
+000000r 2               STRETCHL    = $FC1C
+000000r 2               STRETCHH    = $FC1D
+000000r 2               TILTL       = $FC1E
+000000r 2               TILTH       = $FC1F
+000000r 2               SPRDOFFL    = $FC20
+000000r 2               SPRDOFFH    = $FC21
+000000r 2               SPRVPOSL    = $FC22
+000000r 2               SPRVPOSH    = $FC23
+000000r 2               COLLOFFL    = $FC24
+000000r 2               COLLOFFH    = $FC25
+000000r 2               VSIZACUML   = $FC26
+000000r 2               VSIZACUMH   = $FC27
+000000r 2               HSIZOFFL    = $FC28
+000000r 2               HSIZOFFH    = $FC29
+000000r 2               VSIZOFFL    = $FC2A
+000000r 2               VSIZOFFH    = $FC2B
+000000r 2               SCBADRL     = $FC2C
+000000r 2               SCBADRH     = $FC2D
+000000r 2               PROCADRL    = $FC2E
+000000r 2               PROCADRH    = $FC2F
+000000r 2               
+000000r 2               ; Suzy Math
+000000r 2               
+000000r 2               MATHD       = $FC52
+000000r 2               MATHC       = $FC53
+000000r 2               MATHB       = $FC54
+000000r 2               MATHA       = $FC55
+000000r 2               MATHP       = $FC56
+000000r 2               MATHN       = $FC57
+000000r 2               MATHH       = $FC60
+000000r 2               MATHG       = $FC61
+000000r 2               MATHF       = $FC62
+000000r 2               MATHE       = $FC63
+000000r 2               MATHM       = $FC6C
+000000r 2               MATHL       = $FC6D
+000000r 2               MATHK       = $FC6E
+000000r 2               MATHJ       = $FC6F
+000000r 2               
+000000r 2               ; Suzy Misc
+000000r 2               
+000000r 2               SPRCTL0     = $FC80
+000000r 2               SPRCTL1     = $FC81
+000000r 2               SPRCOLL     = $FC82
+000000r 2               SPRINIT     = $FC83
+000000r 2               SUZYHREV    = $FC88
+000000r 2               SUZYSREV    = $FC89
+000000r 2               SUZYBUSEN   = $FC90
+000000r 2               SPRGO       = $FC91
+000000r 2               SPRSYS      = $FC92
+000000r 2               JOYSTICK    = $FCB0
+000000r 2               SWITCHES    = $FCB1
+000000r 2               RCART0      = $FCB2
+000000r 2               RCART1      = $FCB3
+000000r 2               LEDS        = $FCC0
+000000r 2               PARSTATUS   = $FCC2
+000000r 2               PARDATA     = $FCC3
+000000r 2               HOWIE       = $FCC4
+000000r 2               
+000000r 2               
+000000r 2               ; ***
+000000r 2               ; *** Mikey Addresses
+000000r 2               ; ***
+000000r 2               
+000000r 2               ; Mikey Timers
+000000r 2               
+000000r 2               TIMER0      = $FD00
+000000r 2               TIMER1      = $FD04
+000000r 2               TIMER2      = $FD08
+000000r 2               TIMER3      = $FD0C
+000000r 2               TIMER4      = $FD10
+000000r 2               TIMER5      = $FD14
+000000r 2               TIMER6      = $FD18
+000000r 2               TIMER7      = $FD1C
+000000r 2               HTIMER      = $FD00             ; horizontal line timer (timer 0)
+000000r 2               VTIMER      = $FD08             ; vertical blank timer (timer 2)
+000000r 2               
+000000r 2               HTIMBKUP    = $FD00             ; horizontal line timer (timer 0)
+000000r 2               HTIMCTLA    = $FD01
+000000r 2               HTIMCNT     = $FD02
+000000r 2               HTIMCTLB    = $FD03
+000000r 2               VTIMBKUP    = $FD08             ; vertical blank timer (timer 2)
+000000r 2               VTIMCTLA    = $FD09
+000000r 2               VTIMCNT     = $FD0A
+000000r 2               VTIMCTLB    = $FD0B
+000000r 2               BAUDBKUP    = $FD10             ; serial timer (timer 4)
+000000r 2               
+000000r 2               TIM0BKUP    = $FD00
+000000r 2               TIM0CTLA    = $FD01
+000000r 2               TIM0CNT     = $FD02
+000000r 2               TIM0CTLB    = $FD03
+000000r 2               TIM1BKUP    = $FD04
+000000r 2               TIM1CTLA    = $FD05
+000000r 2               TIM1CNT     = $FD06
+000000r 2               TIM1CTLB    = $FD07
+000000r 2               TIM2BKUP    = $FD08
+000000r 2               TIM2CTLA    = $FD09
+000000r 2               TIM2CNT     = $FD0A
+000000r 2               TIM2CTLB    = $FD0B
+000000r 2               TIM3BKUP    = $FD0C
+000000r 2               TIM3CTLA    = $FD0D
+000000r 2               TIM3CNT     = $FD0E
+000000r 2               TIM3CTLB    = $FD0F
+000000r 2               TIM4BKUP    = $FD10
+000000r 2               TIM4CTLA    = $FD11
+000000r 2               TIM4CNT     = $FD12
+000000r 2               TIM4CTLB    = $FD13
+000000r 2               TIM5BKUP    = $FD14
+000000r 2               TIM5CTLA    = $FD15
+000000r 2               TIM5CNT     = $FD16
+000000r 2               TIM5CTLB    = $FD17
+000000r 2               TIM6BKUP    = $FD18
+000000r 2               TIM6CTLA    = $FD19
+000000r 2               TIM6CNT     = $FD1A
+000000r 2               TIM6CTLB    = $FD1B
+000000r 2               TIM7BKUP    = $FD1C
+000000r 2               TIM7CTLA    = $FD1D
+000000r 2               TIM7CNT     = $FD1E
+000000r 2               TIM7CTLB    = $FD1F
+000000r 2               
+000000r 2               ; Mikey Audio
+000000r 2               
+000000r 2               AUDIO0      = $FD20             ; audio channel 0
+000000r 2               AUDIO1      = $FD28             ; audio channel 1
+000000r 2               AUDIO2      = $FD30             ; audio channel 2
+000000r 2               AUDIO3      = $FD38             ; audio channel 3
+000000r 2               
+000000r 2               AUD0VOL     = $FD20
+000000r 2               AUD0FEED    = $FD21
+000000r 2               AUD0OUT     = $FD22
+000000r 2               AUD0SHIFT   = $FD23
+000000r 2               AUD0BKUP    = $FD24
+000000r 2               AUD0CTLA    = $FD25
+000000r 2               AUD0CNT     = $FD26
+000000r 2               AUD0CTLB    = $FD27
+000000r 2               AUD1VOL     = $FD28
+000000r 2               AUD1FEED    = $FD29
+000000r 2               AUD1OUT     = $FD2A
+000000r 2               AUD1SHIFT   = $FD2B
+000000r 2               AUD1BKUP    = $FD2C
+000000r 2               AUD1CTLA    = $FD2D
+000000r 2               AUD1CNT     = $FD2E
+000000r 2               AUD1CTLB    = $FD2F
+000000r 2               AUD2VOL     = $FD30
+000000r 2               AUD2FEED    = $FD31
+000000r 2               AUD2OUT     = $FD32
+000000r 2               AUD2SHIFT   = $FD33
+000000r 2               AUD2BKUP    = $FD34
+000000r 2               AUD2CTLA    = $FD35
+000000r 2               AUD2CNT     = $FD36
+000000r 2               AUD2CTLB    = $FD37
+000000r 2               AUD3VOL     = $FD38
+000000r 2               AUD3FEED    = $FD39
+000000r 2               AUD3OUT     = $FD3A
+000000r 2               AUD3SHIFT   = $FD3B
+000000r 2               AUD3BKUP    = $FD3C
+000000r 2               AUD3CTLA    = $FD3D
+000000r 2               AUD3CNT     = $FD3E
+000000r 2               AUD3CTLB    = $FD3F
+000000r 2               MSTEREO     = $FD50
+000000r 2               
+000000r 2               ; Mikey Misc
+000000r 2               
+000000r 2               INTRST      = $FD80
+000000r 2               INTSET      = $FD81
+000000r 2               MAGRDY0     = $FD84
+000000r 2               MAGRDY1     = $FD85
+000000r 2               AUDIN       = $FD86
+000000r 2               SYSCTL1     = $FD87
+000000r 2               MIKEYHREV   = $FD88
+000000r 2               MIKEYSREV   = $FD89
+000000r 2               IODIR       = $FD8A
+000000r 2               IODAT       = $FD8B
+000000r 2               SERCTL      = $FD8C
+000000r 2               SERDAT      = $FD8D
+000000r 2               SDONEACK    = $FD90
+000000r 2               CPUSLEEP    = $FD91
+000000r 2               DISPCTL     = $FD92
+000000r 2               PBKUP       = $FD93
+000000r 2               DISPADRL    = $FD94
+000000r 2               DISPADRH    = $FD95
+000000r 2               MTEST0      = $FD9C
+000000r 2               MTEST1      = $FD9D
+000000r 2               MTEST2      = $FD9E
+000000r 2               PALETTE     = $FDA0                 ; hardware rgb palette
+000000r 2               GCOLMAP     = $FDA0                 ; hardware rgb palette (green)
+000000r 2               RBCOLMAP    = $FDB0                 ; hardware rgb palette (red-blue)
+000000r 2               
+000000r 2               
+000000r 2               ; ***
+000000r 2               ; *** Misc Hardware + 6502 vectors
+000000r 2               ; ***
+000000r 2               
+000000r 2               MAPCTL      = $FFF9
+000000r 2               VECTORS     = $FFFB
+000000r 2               INTVECTL    = $FFFE
+000000r 2               INTVECTH    = $FFFF
+000000r 2               RSTVECTL    = $FFFC
+000000r 2               RSTVECTH    = $FFFD
+000000r 2               NMIVECTL    = $FFFA
+000000r 2               NMIVECTH    = $FFFB
+000000r 2               
+000000r 2               
+000000r 1               		.export     FileReadOver, FileReadBytes
+000000r 2               ;
+000000r 2               ; extzp.inc for the Lynx
+000000r 2               ;
+000000r 2               ; Ullrich von Bassewitz, 2004-11-06
+000000r 2               ;
+000000r 2               ; Assembler include file that imports the runtime zero page locations used
+000000r 2               ; by the Lynx runtime, ready for usage in asm code.
+000000r 2               ;
+000000r 2               
+000000r 2               
+000000r 2                      	.global         __iodat: zp
+000000r 2                       .global         __iodir: zp
+000000r 2                       .global         __viddma: zp
+000000r 2                       .global         __sprsys: zp
+000000r 2               	.global         _abc_score_ptr0: zp
+000000r 2               	.global         _abc_score_ptr1: zp
+000000r 2               	.global         _abc_score_ptr2: zp
+000000r 2               	.global         _abc_score_ptr3: zp
+000000r 2               	.global  	_FileEntry: zp
+000000r 2               	.global  	_FileStartBlock: zp
+000000r 2               	.global  	_FileBlockOffset: zp
+000000r 2               	.global  	_FileExecFlag: zp
+000000r 2               	.global  	_FileDestAddr: zp
+000000r 2               	.global  	_FileFileLen: zp
+000000r 2               	.global  	_FileCurrBlock: zp
+000000r 2               	.global  	_FileBlockByte: zp
+000000r 2               	.global  	_FileDestPtr: zp
+000000r 2               
+000000r 2               
+000000r 2               
+000000r 2               
+000000r 1               		.export     FileReadByte, FileSelectBlock
+000000r 1               
+000000r 1               
+000000r 1               	.code
+000000r 1               
+000000r 1               
+000000r 1               ;**********************************
+000000r 1               ; Overread some bytes
+000000r 1               ; X:Y count (EOR $FFFF)
+000000r 1               ;**********************************
+000000r 1  E8           FileReadOver:   inx
+000001r 1  D0 03        		bne FROcont0
+000003r 1  C8           		iny
+000004r 1  F0 57        		beq exit
+000006r 1  20 rr rr     FROcont0:       jsr FileReadByte
+000009r 1  80 F5        		bra FileReadOver
+00000Br 1               
+00000Br 1               ;**********************************
+00000Br 1               ; load to DestPtr
+00000Br 1               ; X:Y count (EOR $ffff)
+00000Br 1               ;**********************************
+00000Br 1  E8           FileReadBytes:  inx
+00000Cr 1  D0 03        		bne FRBcont1
+00000Er 1  C8           		iny
+00000Fr 1  F0 4C        		beq exit
+000011r 1  20 rr rr     FRBcont1:       jsr FileReadByte       ; one byte from the cartridge
+000014r 1  92 rr        		sta (_FileDestPtr)
+000016r 1  E6 rr        		inc _FileDestPtr
+000018r 1  D0 F1        		bne FileReadBytes
+00001Ar 1  E6 rr        		inc _FileDestPtr+1
+00001Cr 1  80 ED        		bra FileReadBytes
+00001Er 1               
+00001Er 1               ;**********************************
+00001Er 1               ; Read one byte from cartridge
+00001Er 1               ;**********************************
+00001Er 1  AD B2 FC     FileReadByte:   lda $fcb2 ; use CARD0 for reads !!!!!
+000021r 1  E6 rr        		inc _FileBlockByte
+000023r 1  D0 38        		bne exit
+000025r 1  E6 rr        		inc _FileBlockByte+1
+000027r 1  D0 34        		bne exit
+000029r 1               
+000029r 1               
+000029r 1               ;**********************************
+000029r 1               ; Select a block
+000029r 1               ;**********************************
+000029r 1               FileSelectBlock:
+000029r 1  48           		pha
+00002Ar 1  DA           		phx
+00002Br 1  5A           		phy
+00002Cr 1  A5 rr        		lda __iodat
+00002Er 1  29 FC        		and #$fc
+000030r 1  A8           		tay
+000031r 1  09 02        		ora #2
+000033r 1  AA           		tax
+000034r 1  A5 rr        		lda _FileCurrBlock
+000036r 1  E6 rr        		inc _FileCurrBlock
+000038r 1  38           		sec
+000039r 1  80 0B        		bra SLB2
+00003Br 1               
+00003Br 1  90 04        SLB0:           bcc SLB1
+00003Dr 1  8E 8B FD     		stx $fd8b
+000040r 1  18           		clc
+000041r 1               
+000041r 1  E8           SLB1:           inx
+000042r 1  8E 87 FD     		stx $fd87
+000045r 1  CA           		dex
+000046r 1               
+000046r 1  8E 87 FD     SLB2:           stx $fd87
+000049r 1  2A           		rol
+00004Ar 1  8C 8B FD     		sty $fd8b
+00004Dr 1  D0 EC        		bne SLB0
+00004Fr 1               
+00004Fr 1  A5 rr        		lda __iodat
+000051r 1  8D 8B FD     		sta $fd8b
+000054r 1  64 rr        		stz _FileBlockByte
+000056r 1  A9 FC        		lda #$100-(>1024)
+000058r 1  85 rr        		sta _FileBlockByte+1
+00005Ar 1  7A           		ply
+00005Br 1  FA           		plx
+00005Cr 1  68           		pla
+00005Dr 1               
+00005Dr 1  60           exit:           rts
+00005Er 1               
+00005Er 1               ;###################################################################
+00005Er 1               
+00005Er 1               
+00005Er 1               
+00005Er 1               

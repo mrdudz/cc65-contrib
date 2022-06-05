@@ -1,0 +1,135 @@
+
+Version 0.8.0:
+  o  nano layer introduced. New features are:
+       - Bottom Halfs
+       - Multitasking able console I/O
+       - Multitasking able dynamic memory management
+       - Standardized API for easier task creation
+       - CPU usage measurement
+
+
+Version 0.7.0:
+  o  nonblocking/blocking lists added (lists can be used for packet queues)
+  o  added user local storage in task control block
+  o  some small bug fixes in dynamic memory management
+  o  6502 port supports now dynamic count of tasks
+
+
+Version 0.6.0:
+  o  atomic variables added
+  o  posInstallIdleTaskHook returns now the ptr to the previous hook function
+  o  error code names changed to resolve a conflict with Unix style error codes
+  o  bug fixed in dynamic memory management, memory management improved
+
+
+Version 0.5.1:
+  o  added lookup-table for better bit-shift performance on 8bit CPUs
+  o  several functions renamed, postfix alloc->create, free->destroy  
+  o  feature names have changed accordingly to the function names
+  o  added macro MS() that converts milliseconds into timer ticks
+  o  added defined error codes, e.g. -EOK, -EFAIL, -ENOMEM and so on.
+
+
+Version 0.5.0:
+  o this is the first public version
+  o Atmel AVR port added
+  o 6502 port: findbit function improved
+  o functions posMessageAlloc/posMessageSend are now interrupt save 
+  o file poscfg.h split into poscfg.h and port.h
+
+
+Version 0.4.4:
+  o message box functions renamed: Msg -> Message
+  o function posInstallIdleTaskHook added
+  o function posIsTaskUnused renamed to posTaskUnused
+  o preprocessor directives corrected (unneeded braces removed)
+  o pico]OS core prepared for additional nano layer
+
+
+Version 0.4.3:
+  o fixed some type writing errors (lower/upper case) in the sources
+  o some improvements (no bugs found)
+  o generic findbit (file fbit_gen.c) improved
+  o architecure port added: the PowerPC IBM PPC440 is now supported
+
+
+Version 0.4.2:
+  o documentation updated
+  o all prefixes 'os' changed to 'pos'
+
+
+Version 0.4.1:
+  o software interrupts added
+  o bug fixed in round robin scheduling mechanism
+  o bug fixed in function os_sched_event
+  o bug fixed in function posTaskYield
+
+
+Version 0.4:
+  o minor bugfixes
+  o make file support added
+
+
+Version 0.3.2:
+  o filename changed: core.c renamed to picoos.c
+  o the function p_pos_initArch is called from posInit to initialize the port
+  o minor bugfixes and improvements
+  o architecure port added:  6502 compatible processors are now supported
+
+
+Version 0.3.1:
+  o flags-functions added (= one bit semaphores / events)
+  o some code is put into separate subroutines for small code configuration
+  o bad bugs in the event system fixed
+  o license changed to the the modified BSD license
+  o doxygen documentation tags added
+
+
+Version 0.3:
+  o sleep-timer lists can be double chained
+  o function renamed:  posSemaWait to posSemaGet
+  o function added: posSemaWait
+  o function added: posMsgWait
+  o code can be defined to be small: POSCFG_SMALLCODE
+  o jiffies counter variable added
+  o timer added
+  o internal data structures are now memory aligned
+  o much improvements and bugfixes
+
+
+Version 0.2:
+  o MTYPE_t renamed to UMVAR_t
+  o signed type of MTYPE_t added:  MVAR_t
+  o function return status is now 0 on success and -1 on error
+  o function p_pos_initTask() for TASKSTACKTYPE == 2 returns now a status
+  o semaphore functions now return an error status
+  o names of defines SYS_TASKTABSIZE_X and SYS_TASKTABSIZE_Y swapped
+  o code size improvements
+  o array posTaskTable_g[] is now one-dimensional
+  o posTaskCreate returns now a handle to the new task
+  o function added: osGetCurrentTask
+  o function added: posTaskUnused
+  o function added: posTaskGetPriority
+  o function added: posTaskSetPriority
+  o mutexes added
+  o message boxes added
+  o argument checking added
+  o much improvements and bugfixes
+
+
+Version 0.1:
+  Initial version
+
+
+--------------------------------------------
+  Contact Information:
+
+  Dennis Kuschel
+  Emanuel-Backhaus-Str. 20
+  28277 Bremen
+  GERMANY
+
+  email: dennis_k@freenet.de
+  web  : http://mycpu.mikrocontroller.net
+         http://picoos.sourceforge.net
+--------------------------------------------

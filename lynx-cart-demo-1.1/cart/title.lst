@@ -1,0 +1,29 @@
+ca65 V2.10.5 - (C) Copyright 1998-2004 Ullrich von Bassewitz
+Main file   : title.s
+Current file: title.s
+
+000000r 1               ; Atari Lynx title sprite shown at boot time.
+000000r 1               ; Frankly I have no idea of how to build one yet.
+000000r 1               ; So I have to use INSERT.O It is somehow hardcoded
+000000r 1               ; to go to $2400. So __TITLE_START__ has to be
+000000r 1               ; $2400.
+000000r 1               ;
+000000r 1               ; modified from newcc65 by Karri Kaksonen, 2004
+000000r 1               ;
+000000r 1               
+000000r 1               .segment	"TITLESPR"
+000000r 1               palette:
+000000r 1  00 00 00 00  	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+000004r 1  00 00 00 00  
+000008r 1  00 00 00 00  
+000010r 1  00 00 00 00  	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+000014r 1  00 00 00 00  
+000018r 1  00 00 00 00  
+000020r 1               sprite:
+000020r 1  01 10 20     	.byte $01,$10,$20
+000023r 1  00 00 rr rr  	.addr 0, sprite
+000027r 1  00 00 00 00  	.word 0,0
+00002Br 1  00 01 00 01  	.word $100,$100
+00002Fr 1  0F           	.byte $0F
+000030r 1  03 84 00 00  	.byte	3,%10000100,%00000000, $0
+000033r 1               

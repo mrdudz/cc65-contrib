@@ -1,0 +1,2 @@
+parmain.s:	parmain.c paralax.h C:\Programme\cc65\include/cbm.h C:\Programme\cc65\include/c64.h C:\Programme\cc65\include/_vic2.h C:\Programme\cc65\include/_sid.h C:\Programme\cc65\include/_6526.h C:\Programme\cc65\include/stdio.h C:\Programme\cc65\include/stddef.h C:\Programme\cc65\include/stdarg.h C:\Programme\cc65\include/string.h C:\Programme\cc65\include/stdlib.h C:\Programme\cc65\include/assert.h C:\Programme\cc65\include/conio.h C:\Programme\cc65\include/stdbool.h C:\Programme\cc65\include/time.h
+

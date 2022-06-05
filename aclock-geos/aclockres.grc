@@ -1,0 +1,5 @@
+HEADER APPLICATION "aclock" "aclock" "V1.9a" {
+dostype USR
+author "Antoni Sawicki"
+info "ascii clock for GEOS"
+}

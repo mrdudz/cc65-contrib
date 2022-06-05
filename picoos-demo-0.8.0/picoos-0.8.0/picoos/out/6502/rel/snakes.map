@@ -1,0 +1,1247 @@
+Modules list:
+-------------
+snakes.o:
+    CODE              Offs=000000  Size=000E5E  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=0002B8  Align=00001  Fill=0000
+    BSS               Offs=000000  Size=00200A  Align=00001  Fill=0000
+    DATA              Offs=000000  Size=000027  Align=00001  Fill=0000
+../../../../picoos/lib/6502/rel/picoos.lib(picoos.o):
+    CODE              Offs=000E5E  Size=0010E0  Align=00001  Fill=0000
+    BSS               Offs=00200A  Size=000450  Align=00001  Fill=0000
+    DATA              Offs=000027  Size=000011  Align=00001  Fill=0000
+../../../../picoos/lib/6502/rel/picoos.lib(n_conio.o):
+    CODE              Offs=001F3E  Size=000590  Align=00001  Fill=0000
+    RODATA            Offs=0002B8  Size=000003  Align=00001  Fill=0000
+    BSS               Offs=00245A  Size=00001B  Align=00001  Fill=0000
+../../../../picoos/lib/6502/rel/picoos.lib(n_core.o):
+    CODE              Offs=0024CE  Size=0002D5  Align=00001  Fill=0000
+    BSS               Offs=002475  Size=00000D  Align=00001  Fill=0000
+    DATA              Offs=000038  Size=000006  Align=00001  Fill=0000
+../../../../picoos/lib/6502/rel/picoos.lib(n_mem.o):
+    CODE              Offs=0027A3  Size=00033A  Align=00001  Fill=0000
+    BSS               Offs=002482  Size=000002  Align=00001  Fill=0000
+../../../../picoos/lib/6502/rel/picoos.lib(arch_c.o):
+    CODE              Offs=002ADD  Size=000314  Align=00001  Fill=0000
+    BSS               Offs=002484  Size=00214E  Align=00001  Fill=0000
+../../../../picoos/lib/6502/rel/picoos.lib(arch_a.o):
+    CODE              Offs=002DF1  Size=0002B0  Align=00001  Fill=0000
+    BSS               Offs=0045D2  Size=000108  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(add.o):
+    CODE              Offs=0030A1  Size=00001C  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(addeqsp.o):
+    CODE              Offs=0030BD  Size=000011  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(addysp.o):
+    CODE              Offs=0030CE  Size=00000E  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(aslax1.o):
+    CODE              Offs=0030DC  Size=000008  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(aslax2.o):
+    CODE              Offs=0030E4  Size=00000B  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(aslax3.o):
+    CODE              Offs=0030EF  Size=00000E  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(aslax4.o):
+    CODE              Offs=0030FD  Size=000011  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(asleax3.o):
+    CODE              Offs=00310E  Size=00001A  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(call.o):
+    CODE              Offs=003128  Size=000007  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(callmain.o):
+    CODE              Offs=00312F  Size=000017  Align=00001  Fill=0000
+    DATA              Offs=00003E  Size=000004  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(condes.o):
+    CODE              Offs=003146  Size=00000C  Align=00001  Fill=0000
+    DATA              Offs=000042  Size=000025  Align=00001  Fill=0000
+    ONCE              Offs=000000  Size=00000C  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(crt0.o):
+    STARTUP           Offs=000000  Size=000033  Align=00001  Fill=0000
+    ONCE              Offs=00000C  Size=00001A  Align=00001  Fill=0000
+    INIT              Offs=000000  Size=00001C  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(decax1.o):
+    CODE              Offs=003152  Size=000007  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(decax2.o):
+    CODE              Offs=003159  Size=000007  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(decax4.o):
+    CODE              Offs=003160  Size=000007  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(decaxy.o):
+    CODE              Offs=003167  Size=000009  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(decsp1.o):
+    CODE              Offs=003170  Size=000009  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(decsp2.o):
+    CODE              Offs=003179  Size=00000D  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(decsp3.o):
+    CODE              Offs=003186  Size=00000D  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(decsp4.o):
+    CODE              Offs=003193  Size=00000D  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(decsp5.o):
+    CODE              Offs=0031A0  Size=00000D  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(decsp7.o):
+    CODE              Offs=0031AD  Size=00000D  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(decsp8.o):
+    CODE              Offs=0031BA  Size=00000D  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(div.o):
+    CODE              Offs=0031C7  Size=000015  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(exehdr.o):
+    EXEHDR            Offs=000000  Size=00000C  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(icmp.o):
+    CODE              Offs=0031DC  Size=00002E  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incax1.o):
+    CODE              Offs=00320A  Size=000007  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incax2.o):
+    CODE              Offs=003211  Size=000007  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incax3.o):
+    CODE              Offs=003218  Size=000005  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incax5.o):
+    CODE              Offs=00321D  Size=000005  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incax6.o):
+    CODE              Offs=003222  Size=000005  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incax7.o):
+    CODE              Offs=003227  Size=000005  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incaxy.o):
+    CODE              Offs=00322C  Size=00000B  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incsp1.o):
+    CODE              Offs=003237  Size=000007  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incsp2.o):
+    CODE              Offs=00323E  Size=000016  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incsp3.o):
+    CODE              Offs=003254  Size=000005  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incsp4.o):
+    CODE              Offs=003259  Size=000005  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incsp5.o):
+    CODE              Offs=00325E  Size=000005  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incsp6.o):
+    CODE              Offs=003263  Size=000005  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incsp7.o):
+    CODE              Offs=003268  Size=000005  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(incsp8.o):
+    CODE              Offs=00326D  Size=000005  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(jmpvec.o):
+    DATA              Offs=000067  Size=000003  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(kernal.o):
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(laddeq.o):
+    CODE              Offs=003272  Size=00002D  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(lcmp.o):
+    CODE              Offs=00329F  Size=00003B  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(ldai.o):
+    CODE              Offs=0032DA  Size=00000C  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(ldaxi.o):
+    CODE              Offs=0032E6  Size=00000D  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(ldaxsp.o):
+    CODE              Offs=0032F3  Size=000009  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(ldeaxysp.o):
+    CODE              Offs=0032FC  Size=000013  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(leaaxsp.o):
+    CODE              Offs=00330F  Size=00000C  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(leq.o):
+    CODE              Offs=00331B  Size=000006  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(lne.o):
+    CODE              Offs=003321  Size=000006  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(loadaddr.o):
+    LOADADDR          Offs=000000  Size=000002  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(lpush.o):
+    CODE              Offs=003327  Size=000021  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(lsub.o):
+    CODE              Offs=003348  Size=000027  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(ludiv.o):
+    CODE              Offs=00336F  Size=00007A  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(makebool.o):
+    CODE              Offs=0033E9  Size=00002C  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(mod.o):
+    CODE              Offs=003415  Size=000011  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(negabs.o):
+    CODE              Offs=003426  Size=000012  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(popptr1.o):
+    CODE              Offs=003438  Size=00000E  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(pusha.o):
+    CODE              Offs=003446  Size=000016  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(pushax.o):
+    CODE              Offs=00345C  Size=00001A  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(pushw.o):
+    CODE              Offs=003476  Size=00000F  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(pushwsp.o):
+    CODE              Offs=003485  Size=00001C  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(rand.o):
+    CODE              Offs=0034A1  Size=000034  Align=00001  Fill=0000
+    DATA              Offs=00006A  Size=000004  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(shelp.o):
+    CODE              Offs=0034D5  Size=000020  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(shl.o):
+    CODE              Offs=0034F5  Size=000033  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(shreax3.o):
+    CODE              Offs=003528  Size=00001A  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(staspidx.o):
+    CODE              Offs=003542  Size=000016  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(status.o):
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(staxsp.o):
+    CODE              Offs=003558  Size=00000B  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(steaxsp.o):
+    CODE              Offs=003563  Size=000015  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(sub.o):
+    CODE              Offs=003578  Size=000015  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(subeqsp.o):
+    CODE              Offs=00358D  Size=000015  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(subysp.o):
+    CODE              Offs=0035A2  Size=00000D  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(udiv.o):
+    CODE              Offs=0035AF  Size=00004F  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(umod.o):
+    CODE              Offs=0035FE  Size=000011  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(zerobss.o):
+    CODE              Offs=00360F  Size=000023  Align=00001  Fill=0000
+/home/groepaz/Desktop/cc65/github-current/cc65/target/../lib/c64.lib(zeropage.o):
+    ZEROPAGE          Offs=000000  Size=00001A  Align=00001  Fill=0000
+
+
+Segment list:
+-------------
+Name                   Start     End    Size  Align
+----------------------------------------------------
+ZEROPAGE              000002  00001B  00001A  00001
+LOADADDR              0007FF  000800  000002  00001
+EXEHDR                000801  00080C  00000C  00001
+STARTUP               00080D  00083F  000033  00001
+CODE                  000840  003E71  003632  00001
+RODATA                003E72  00412C  0002BB  00001
+DATA                  00412D  00419A  00006E  00001
+INIT                  00419B  0041B6  00001C  00001
+BSS                   0041B7  008890  0046DA  00001
+ONCE                  0041B7  0041DC  000026  00001
+
+
+Exports list by name:
+---------------------
+BSOUT                     00FFD2 RLA    ST                        000090 RLZ    
+__BSS_RUN__               0041B7 RLA    __BSS_SIZE__              0046DA REA    
+__CONSTRUCTOR_COUNT__     000000 REA    __CONSTRUCTOR_TABLE__     0041DD RLA    
+__DESTRUCTOR_COUNT__      000000 REA    __DESTRUCTOR_TABLE__      00412D RLA    
+__EXEHDR__                000001 REA    __HEADER_LAST__           00080D RLA    
+__HIMEM__                 00D000 REA    __LOADADDR__              000001 REA    
+__MAIN_SIZE__             00C7F3 REA    __MAIN_START__            00080D RLA    
+__ONCE_RUN__              0041B7 RLA    __STACKSIZE__             000800 REA    
+__STARTUP__               000001 REA    ___heap_end               004152 RLA    
+___heap_start             004150 RLA    _c_nos_keyinput           00277E RLA    
+_c_pos_intEnter           00169E RLA    _c_pos_intExit            0016A2 RLA    
+_c_pos_timerInterrupt     001747 RLA    _main                     0013CB RLA    
+_n_printFormattedN        002870 RLA    _nosCpuUsage              002D0E RLA    
+_nosInit                  002E35 RLA    _nosKeyGet                0027C0 RLA    
+_nosMemAlloc              002FE3 RLA    _nosMemCopy               003293 RLA    
+_nosMemFree               003010 RLA    _nosMemSet                00325D RLA    
+_nosPrint                 002834 RLA    _nosPrintChar             002815 RLA    
+_nosTaskCreate            002E16 RLA    _nos_initConIO            0028E8 RLA    
+_nos_initMem              0032E0 RLA    _p_clear_cpustack         003686 RLA    
+_p_get_sp                 003681 RLA    _p_pos_findbit            0038BC RLA    
+_p_pos_freeStack          003483 RLA    _p_pos_initArch           00331D RLA    
+_p_pos_initTask           00335D RLA    _p_pos_intContextSwitch   003750 RLA    
+_p_pos_softContextSwitch  0036CA RLA    _p_pos_startFirstContext  0036A7 RLA    
+_p_putchar                003631 RLA    _posCurrentTask_g         0061C1 RLA    
+_posGetJiffies            00237D RLA    _posInit                  001ABB RLA    
+_posInstallIdleTaskHook   001E3E RLA    _posMessageAlloc          001FFF RLA    
+_posMessageFree           002078 RLA    _posMessageSend           0020C1 RLA    
+_posMessageWait           0021EE RLA    _posNextTask_g            0061C3 RLA    
+_posRunning_g             004155 RLA    _posSemaCreate            001E61 RLA    
+_posSemaDestroy           001EE8 RLA    _posSemaGet               001F27 RLA    
+_posSemaSignal            001F90 RLA    _posTaskCreate            0018F6 RLA    
+_posTaskExit              001CB9 RLA    _posTaskGetCurrent        001DE1 RLA    
+_posTaskGetPriority       001DE8 RLA    _posTaskSchedLock         001E26 RLA    
+_posTaskSchedUnlock       001E2D RLA    _posTaskSleep             0018B8 RLA    
+_rand                     003CED RLA    _srand                    003CE1 RLA    
+addeq0sp                  0038FD RLA    addeqysp                  0038FF RLA    
+addysp                    00390F RLA    addysp1                   00390E RLA    
+aslax1                    00391C RLA    aslax2                    003924 RLA    
+aslaxy                    003D3C RLA    booleq                    003C2F RLA    
+boolne                    003C29 RLA    callax                    003968 RLA    
+callmain                  00396F RLA    decax1                    003992 RLA    
+decax2                    003999 RLA    decax4                    0039A0 RLA    
+decaxy                    0039A7 RLA    decsp1                    0039B0 RLA    
+decsp2                    0039B9 RLA    decsp3                    0039C6 RLA    
+decsp4                    0039D3 RLA    decsp5                    0039E0 RLA    
+decsp7                    0039ED RLA    decsp8                    0039FA RLA    
+donelib                   003986 RLA    incax1                    003A4A RLA    
+incax2                    003A51 RLA    incax3                    003A58 RLA    
+incax4                    003A6C RLA    incax5                    003A5D RLA    
+incax6                    003A62 RLA    incax7                    003A67 RLA    
+incaxy                    003A6E RLA    incsp1                    003A77 RLA    
+incsp2                    003A86 RLA    incsp3                    003A94 RLA    
+incsp4                    003A99 RLA    incsp5                    003A9E RLA    
+incsp6                    003AA3 RLA    incsp7                    003AA8 RLA    
+incsp8                    003AAD RLA    initlib                   0041B7 RLA    
+jmpvec                    004194 RLA    laddeq1                   003AB2 RLA    
+ldaidx                    003B1A RLA    ldax0sp                   003B33 RLA    
+ldaxi                     003B26 RLA    ldaxidx                   003B28 RLA    
+ldaxysp                   003B35 RLA    ldeaxysp                  003B3E RLA    
+leaa0sp                   003B4F RLA    leaaxsp                   003B51 RLA    
+negax                     003C6A RLA    popax                     003A7E RLA    
+popptr1                   003C78 RLA    popsargsudiv16            003D15 RLA    
+ptr1                      00000A RLZ    ptr2                      00000C RLZ    
+ptr3                      00000E RLZ    ptr4                      000010 RLZ    
+push0                     003C9C RLA    pusha                     003C8A RLA    
+pusha0                    003C9E RLA    pushax                    003CA0 RLA    
+pusheax                   003B70 RLA    pushw                     003CB6 RLA    
+pushw0sp                  003CC5 RLA    pushwidx                  003CB8 RLA    
+pushwysp                  003CC7 RLA    shlax2                    003924 RLA    
+shlax3                    00392F RLA    shlax4                    00393D RLA    
+shleax3                   00394E RLA    shreax3                   003D68 RLA    
+sp                        000002 RLZ    sreg                      000004 RLZ    
+staspidx                  003D82 RLA    stax0sp                   003D98 RLA    
+staxysp                   003D9A RLA    steaxysp                  003DA5 RLA    
+subeq0sp                  003DCD RLA    subeqysp                  003DCF RLA    
+subysp                    003DE2 RLA    tmp1                      000012 RLZ    
+tmp2                      000013 RLZ    tmp3                      000014 RLZ    
+tmp4                      000015 RLZ    tosaddax                  0038E3 RLA    
+tosdiva0                  003A07 RLA    toseqeax                  003B5B RLA    
+tosicmp0                  003A1C RLA    toslcmp                   003ADF RLA    
+tosmoda0                  003C55 RLA    tosneeax                  003B61 RLA    
+tossuba0                  003DB8 RLA    tossubax                  003DBA RLA    
+tossubeax                 003B8E RLA    tosudiva0                 003DEF RLA    
+tosudiveax                003BB5 RLA    tosumoda0                 003E3E RLA    
+tosumodax                 003E40 RLA    udiv16                    003E00 RLA    
+zerobss                   003E4F RLA    
+
+
+Exports list by value:
+----------------------
+__CONSTRUCTOR_COUNT__     000000 REA    __DESTRUCTOR_COUNT__      000000 REA    
+__EXEHDR__                000001 REA    __LOADADDR__              000001 REA    
+__STARTUP__               000001 REA    sp                        000002 RLZ    
+sreg                      000004 RLZ    ptr1                      00000A RLZ    
+ptr2                      00000C RLZ    ptr3                      00000E RLZ    
+ptr4                      000010 RLZ    tmp1                      000012 RLZ    
+tmp2                      000013 RLZ    tmp3                      000014 RLZ    
+tmp4                      000015 RLZ    ST                        000090 RLZ    
+__STACKSIZE__             000800 REA    __HEADER_LAST__           00080D RLA    
+__MAIN_START__            00080D RLA    _main                     0013CB RLA    
+_c_pos_intEnter           00169E RLA    _c_pos_intExit            0016A2 RLA    
+_c_pos_timerInterrupt     001747 RLA    _posTaskSleep             0018B8 RLA    
+_posTaskCreate            0018F6 RLA    _posInit                  001ABB RLA    
+_posTaskExit              001CB9 RLA    _posTaskGetCurrent        001DE1 RLA    
+_posTaskGetPriority       001DE8 RLA    _posTaskSchedLock         001E26 RLA    
+_posTaskSchedUnlock       001E2D RLA    _posInstallIdleTaskHook   001E3E RLA    
+_posSemaCreate            001E61 RLA    _posSemaDestroy           001EE8 RLA    
+_posSemaGet               001F27 RLA    _posSemaSignal            001F90 RLA    
+_posMessageAlloc          001FFF RLA    _posMessageFree           002078 RLA    
+_posMessageSend           0020C1 RLA    _posMessageWait           0021EE RLA    
+_posGetJiffies            00237D RLA    _c_nos_keyinput           00277E RLA    
+_nosKeyGet                0027C0 RLA    _nosPrintChar             002815 RLA    
+_nosPrint                 002834 RLA    _n_printFormattedN        002870 RLA    
+_nos_initConIO            0028E8 RLA    _nosCpuUsage              002D0E RLA    
+_nosTaskCreate            002E16 RLA    _nosInit                  002E35 RLA    
+_nosMemAlloc              002FE3 RLA    _nosMemFree               003010 RLA    
+_nosMemSet                00325D RLA    _nosMemCopy               003293 RLA    
+_nos_initMem              0032E0 RLA    _p_pos_initArch           00331D RLA    
+_p_pos_initTask           00335D RLA    _p_pos_freeStack          003483 RLA    
+_p_putchar                003631 RLA    _p_get_sp                 003681 RLA    
+_p_clear_cpustack         003686 RLA    _p_pos_startFirstContext  0036A7 RLA    
+_p_pos_softContextSwitch  0036CA RLA    _p_pos_intContextSwitch   003750 RLA    
+_p_pos_findbit            0038BC RLA    tosaddax                  0038E3 RLA    
+addeq0sp                  0038FD RLA    addeqysp                  0038FF RLA    
+addysp1                   00390E RLA    addysp                    00390F RLA    
+aslax1                    00391C RLA    aslax2                    003924 RLA    
+shlax2                    003924 RLA    shlax3                    00392F RLA    
+shlax4                    00393D RLA    shleax3                   00394E RLA    
+callax                    003968 RLA    callmain                  00396F RLA    
+donelib                   003986 RLA    decax1                    003992 RLA    
+decax2                    003999 RLA    decax4                    0039A0 RLA    
+decaxy                    0039A7 RLA    decsp1                    0039B0 RLA    
+decsp2                    0039B9 RLA    decsp3                    0039C6 RLA    
+decsp4                    0039D3 RLA    decsp5                    0039E0 RLA    
+decsp7                    0039ED RLA    decsp8                    0039FA RLA    
+tosdiva0                  003A07 RLA    tosicmp0                  003A1C RLA    
+incax1                    003A4A RLA    incax2                    003A51 RLA    
+incax3                    003A58 RLA    incax5                    003A5D RLA    
+incax6                    003A62 RLA    incax7                    003A67 RLA    
+incax4                    003A6C RLA    incaxy                    003A6E RLA    
+incsp1                    003A77 RLA    popax                     003A7E RLA    
+incsp2                    003A86 RLA    incsp3                    003A94 RLA    
+incsp4                    003A99 RLA    incsp5                    003A9E RLA    
+incsp6                    003AA3 RLA    incsp7                    003AA8 RLA    
+incsp8                    003AAD RLA    laddeq1                   003AB2 RLA    
+toslcmp                   003ADF RLA    ldaidx                    003B1A RLA    
+ldaxi                     003B26 RLA    ldaxidx                   003B28 RLA    
+ldax0sp                   003B33 RLA    ldaxysp                   003B35 RLA    
+ldeaxysp                  003B3E RLA    leaa0sp                   003B4F RLA    
+leaaxsp                   003B51 RLA    toseqeax                  003B5B RLA    
+tosneeax                  003B61 RLA    pusheax                   003B70 RLA    
+tossubeax                 003B8E RLA    tosudiveax                003BB5 RLA    
+boolne                    003C29 RLA    booleq                    003C2F RLA    
+tosmoda0                  003C55 RLA    negax                     003C6A RLA    
+popptr1                   003C78 RLA    pusha                     003C8A RLA    
+push0                     003C9C RLA    pusha0                    003C9E RLA    
+pushax                    003CA0 RLA    pushw                     003CB6 RLA    
+pushwidx                  003CB8 RLA    pushw0sp                  003CC5 RLA    
+pushwysp                  003CC7 RLA    _srand                    003CE1 RLA    
+_rand                     003CED RLA    popsargsudiv16            003D15 RLA    
+aslaxy                    003D3C RLA    shreax3                   003D68 RLA    
+staspidx                  003D82 RLA    stax0sp                   003D98 RLA    
+staxysp                   003D9A RLA    steaxysp                  003DA5 RLA    
+tossuba0                  003DB8 RLA    tossubax                  003DBA RLA    
+subeq0sp                  003DCD RLA    subeqysp                  003DCF RLA    
+subysp                    003DE2 RLA    tosudiva0                 003DEF RLA    
+udiv16                    003E00 RLA    tosumoda0                 003E3E RLA    
+tosumodax                 003E40 RLA    zerobss                   003E4F RLA    
+__DESTRUCTOR_TABLE__      00412D RLA    ___heap_start             004150 RLA    
+___heap_end               004152 RLA    _posRunning_g             004155 RLA    
+jmpvec                    004194 RLA    __BSS_RUN__               0041B7 RLA    
+__ONCE_RUN__              0041B7 RLA    initlib                   0041B7 RLA    
+__CONSTRUCTOR_TABLE__     0041DD RLA    __BSS_SIZE__              0046DA REA    
+_posCurrentTask_g         0061C1 RLA    _posNextTask_g            0061C3 RLA    
+__MAIN_SIZE__             00C7F3 REA    __HIMEM__                 00D000 REA    
+BSOUT                     00FFD2 RLA    
+
+
+Imports list:
+-------------
+BSOUT (kernal.o):
+    crt0.o                    c64/crt0.s:10
+ST (status.o):
+    crt0.o                    c64/crt0.s:13
+__BSS_RUN__ ([linker generated]):
+    zerobss.o                 common/zerobss.s:8
+__BSS_SIZE__ ([linker generated]):
+    zerobss.o                 common/zerobss.s:8
+__CONSTRUCTOR_COUNT__ ([linker generated]):
+    condes.o                  runtime/condes.s:18
+__CONSTRUCTOR_TABLE__ ([linker generated]):
+    condes.o                  runtime/condes.s:18
+__DESTRUCTOR_COUNT__ ([linker generated]):
+    condes.o                  runtime/condes.s:19
+__DESTRUCTOR_TABLE__ ([linker generated]):
+    condes.o                  runtime/condes.s:19
+__EXEHDR__ (exehdr.o):
+    [linker generated]        /home/groepaz/Desktop/cc65/github-current/cc65/cfg/c64.cfg:6
+__HEADER_LAST__ ([linker generated]):
+    [linker generated]        /home/groepaz/Desktop/cc65/github-current/cc65/cfg/c64.cfg:14
+    [linker generated]        /home/groepaz/Desktop/cc65/github-current/cc65/cfg/c64.cfg:14
+__HIMEM__ ([linker generated]):
+    [linker generated]        /home/groepaz/Desktop/cc65/github-current/cc65/cfg/c64.cfg:15
+    [linker generated]        /home/groepaz/Desktop/cc65/github-current/cc65/cfg/c64.cfg:14
+__LOADADDR__ (loadaddr.o):
+    [linker generated]        /home/groepaz/Desktop/cc65/github-current/cc65/cfg/c64.cfg:5
+__MAIN_SIZE__ ([linker generated]):
+    crt0.o                    c64/crt0.s:11
+__MAIN_START__ ([linker generated]):
+    crt0.o                    c64/crt0.s:11
+__ONCE_RUN__ ([linker generated]):
+    [linker generated]        /home/groepaz/Desktop/cc65/github-current/cc65/cfg/c64.cfg:15
+    [linker generated]        /home/groepaz/Desktop/cc65/github-current/cc65/cfg/c64.cfg:15
+__STACKSIZE__ ([linker generated]):
+    [linker generated]        /home/groepaz/Desktop/cc65/github-current/cc65/cfg/c64.cfg:15
+__STARTUP__ (crt0.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:13
+___heap_end (snakes.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:14
+___heap_start (snakes.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:13
+_c_nos_keyinput (n_conio.o):
+    arch_a.o                  ports/6502/arch_a.s:86
+_c_pos_intEnter (picoos.o):
+    arch_a.o                  ports/6502/arch_a.s:72
+_c_pos_intExit (picoos.o):
+    arch_a.o                  ports/6502/arch_a.s:73
+_c_pos_timerInterrupt (picoos.o):
+    arch_a.o                  ports/6502/arch_a.s:74
+_main (snakes.o):
+    callmain.o                runtime/callmain.s:11
+_n_printFormattedN (n_conio.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:37
+_nosCpuUsage (n_core.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:38
+_nosInit (n_core.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:40
+_nosKeyGet (n_conio.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:34
+_nosMemAlloc (n_mem.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:30
+_nosMemCopy (n_mem.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:33
+_nosMemFree (n_mem.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:31
+_nosMemSet (n_mem.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:32
+_nosPrint (n_conio.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:36
+_nosPrintChar (n_conio.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:35
+_nosTaskCreate (n_core.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:39
+_nos_initConIO (n_conio.o):
+    n_core.o                  obj/6502/rel/n_core.i:22
+_nos_initMem (n_mem.o):
+    n_core.o                  obj/6502/rel/n_core.i:21
+_p_clear_cpustack (arch_a.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:19
+_p_get_sp (arch_a.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:18
+_p_pos_findbit (arch_a.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:13
+    picoos.o                  obj/6502/rel/picoos.i:17
+_p_pos_freeStack (arch_c.o):
+    picoos.o                  obj/6502/rel/picoos.i:20
+_p_pos_initArch (arch_c.o):
+    picoos.o                  obj/6502/rel/picoos.i:18
+_p_pos_initTask (arch_c.o):
+    picoos.o                  obj/6502/rel/picoos.i:19
+_p_pos_intContextSwitch (arch_a.o):
+    picoos.o                  obj/6502/rel/picoos.i:23
+_p_pos_softContextSwitch (arch_a.o):
+    picoos.o                  obj/6502/rel/picoos.i:22
+_p_pos_startFirstContext (arch_a.o):
+    picoos.o                  obj/6502/rel/picoos.i:21
+_p_putchar (arch_a.o):
+    n_conio.o                 obj/6502/rel/n_conio.i:24
+_posCurrentTask_g (picoos.o):
+    arch_a.o                  ports/6502/arch_a.s:68
+_posGetJiffies (picoos.o):
+    n_core.o                  obj/6502/rel/n_core.i:17
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:27
+_posInit (picoos.o):
+    n_core.o                  obj/6502/rel/n_core.i:15
+_posInstallIdleTaskHook (picoos.o):
+    n_core.o                  obj/6502/rel/n_core.i:16
+_posMessageAlloc (picoos.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:23
+_posMessageFree (picoos.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:24
+_posMessageSend (picoos.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:25
+_posMessageWait (picoos.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:26
+_posNextTask_g (picoos.o):
+    arch_a.o                  ports/6502/arch_a.s:69
+_posRunning_g (picoos.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:15
+_posSemaCreate (picoos.o):
+    n_conio.o                 obj/6502/rel/n_conio.i:13
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:19
+_posSemaDestroy (picoos.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:20
+_posSemaGet (picoos.o):
+    n_conio.o                 obj/6502/rel/n_conio.i:14
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:21
+_posSemaSignal (picoos.o):
+    n_conio.o                 obj/6502/rel/n_conio.i:15
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:22
+_posTaskCreate (picoos.o):
+    n_core.o                  obj/6502/rel/n_core.i:14
+_posTaskExit (picoos.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:17
+_posTaskGetCurrent (picoos.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:17
+_posTaskGetPriority (picoos.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:18
+_posTaskSchedLock (picoos.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:16
+_posTaskSchedUnlock (picoos.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:17
+_posTaskSleep (picoos.o):
+    n_core.o                  obj/6502/rel/n_core.i:13
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:16
+_rand (rand.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:14
+_srand (rand.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:15
+addeq0sp (addeqsp.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+addeqysp (addeqsp.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+addysp (addysp.o):
+    incsp8.o                  runtime/incsp8.s:8
+    incsp7.o                  runtime/incsp7.s:8
+    incsp6.o                  runtime/incsp6.s:8
+    incsp5.o                  runtime/incsp5.s:8
+    incsp4.o                  runtime/incsp4.s:8
+    incsp3.o                  runtime/incsp3.s:8
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+addysp1 (addysp.o):
+    sub.o                     runtime/sub.s:8
+    ludiv.o                   runtime/ludiv.s:9
+    lsub.o                    runtime/lsub.s:11
+aslax1 (aslax1.o):
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+aslax2 (aslax2.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+aslaxy (shl.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+booleq (makebool.o):
+    leq.o                     runtime/leq.s:8
+boolne (makebool.o):
+    lne.o                     runtime/lne.s:8
+callax (call.o):
+    picoos.o                  obj/6502/rel/picoos.i:3703
+callmain (callmain.o):
+    crt0.o                    c64/crt0.s:9
+decax1 (decax1.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+decax2 (decax2.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+decax4 (decax4.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+decaxy (decaxy.o):
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+decsp1 (decsp1.o):
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+decsp2 (decsp2.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+decsp3 (decsp3.o):
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+decsp4 (decsp4.o):
+    lpush.o                   runtime/lpush.s:12
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+decsp5 (decsp5.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+decsp7 (decsp7.o):
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+decsp8 (decsp8.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+donelib (condes.o):
+    crt0.o                    c64/crt0.s:8
+incax1 (incax1.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+incax2 (incax2.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+incax3 (incax3.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+incax4 (incaxy.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+incax5 (incax5.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+incax6 (incax6.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+incax7 (incax7.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+incaxy (incaxy.o):
+    incax7.o                  runtime/incax7.s:8
+    incax6.o                  runtime/incax6.s:8
+    incax5.o                  runtime/incax5.s:8
+    incax3.o                  runtime/incax3.s:8
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+incsp1 (incsp1.o):
+    arch_a.o                  ports/6502/arch_a.s:75
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+incsp2 (incsp2.o):
+    popptr1.o                 runtime/popptr1.s:8
+    staspidx.o                runtime/staspidx.s:8
+    arch_a.o                  ports/6502/arch_a.s:76
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+incsp3 (incsp3.o):
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+incsp4 (incsp4.o):
+    lcmp.o                    runtime/lcmp.s:9
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+incsp5 (incsp5.o):
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+incsp6 (incsp6.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+incsp7 (incsp7.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+incsp8 (incsp8.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_core.o                  obj/6502/rel/n_core.i:588
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+initlib (condes.o):
+    crt0.o                    c64/crt0.s:8
+jmpvec (jmpvec.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+laddeq1 (laddeq.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+ldaidx (ldai.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+ldax0sp (ldaxsp.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+ldaxi (ldaxi.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+ldaxidx (ldaxi.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+ldaxysp (ldaxsp.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+ldeaxysp (ldeaxysp.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+leaa0sp (leaaxsp.o):
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+leaaxsp (leaaxsp.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+negax (negabs.o):
+    shelp.o                   runtime/shelp.s:11
+    mod.o                     runtime/mod.s:11
+    div.o                     runtime/div.s:11
+popax (incsp2.o):
+    shl.o                     runtime/shl.s:15
+    shelp.o                   runtime/shelp.s:11
+popptr1 (popptr1.o):
+    umod.o                    runtime/umod.s:8
+    udiv.o                    runtime/udiv.s:9
+popsargsudiv16 (shelp.o):
+    mod.o                     runtime/mod.s:11
+    div.o                     runtime/div.s:11
+ptr1 (zeropage.o):
+    popptr1.o                 runtime/popptr1.s:9
+    lcmp.o                    runtime/lcmp.s:10
+    zerobss.o                 common/zerobss.s:9
+    udiv.o                    runtime/udiv.s:10
+    staspidx.o                runtime/staspidx.s:9
+    shelp.o                   runtime/shelp.s:12
+    pushw.o                   runtime/pushw.s:9
+    ludiv.o                   runtime/ludiv.s:10
+    ldaxi.o                   runtime/ldaxi.s:8
+    ldai.o                    runtime/ldai.s:8
+    laddeq.o                  runtime/laddeq.s:12
+    div.o                     runtime/div.s:12
+    call.o                    runtime/call.s:8
+    arch_a.o                  ports/6502/arch_a.s:65
+    arch_c.o                  obj/6502/rel/arch_c.i:11
+    n_mem.o                   obj/6502/rel/n_mem.i:11
+    n_core.o                  obj/6502/rel/n_core.i:11
+    n_conio.o                 obj/6502/rel/n_conio.i:11
+    picoos.o                  obj/6502/rel/picoos.i:11
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:11
+ptr2 (zeropage.o):
+    ludiv.o                   runtime/ludiv.s:10
+    n_mem.o                   obj/6502/rel/n_mem.i:11
+    picoos.o                  obj/6502/rel/picoos.i:11
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:11
+ptr3 (zeropage.o):
+    ludiv.o                   runtime/ludiv.s:10
+ptr4 (zeropage.o):
+    umod.o                    runtime/umod.s:9
+    udiv.o                    runtime/udiv.s:10
+    shelp.o                   runtime/shelp.s:12
+    ludiv.o                   runtime/ludiv.s:10
+push0 (pushax.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+pusha (pusha.o):
+    arch_a.o                  ports/6502/arch_a.s:87
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+pusha0 (pushax.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+pushax (pushax.o):
+    callmain.o                runtime/callmain.s:11
+    pushw.o                   runtime/pushw.s:8
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+pusheax (lpush.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+pushw (pushw.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+pushw0sp (pushwsp.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+pushwidx (pushw.o):
+    picoos.o                  obj/6502/rel/picoos.i:3703
+pushwysp (pushwsp.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+shlax2 (aslax2.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+shlax3 (aslax3.o):
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+shlax4 (aslax4.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+shleax3 (asleax3.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+shreax3 (shreax3.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+sp (zeropage.o):
+    popptr1.o                 runtime/popptr1.s:9
+    lcmp.o                    runtime/lcmp.s:10
+    subysp.o                  runtime/subysp.s:9
+    subeqsp.o                 runtime/subeqsp.s:8
+    sub.o                     runtime/sub.s:9
+    steaxsp.o                 runtime/steaxsp.s:8
+    staxsp.o                  runtime/staxsp.s:8
+    staspidx.o                runtime/staspidx.s:9
+    pushwsp.o                 runtime/pushwsp.s:8
+    pushax.o                  runtime/pushax.s:8
+    pusha.o                   runtime/pusha.s:8
+    ludiv.o                   runtime/ludiv.s:10
+    lsub.o                    runtime/lsub.s:12
+    lpush.o                   runtime/lpush.s:13
+    leaaxsp.o                 runtime/leaaxsp.s:8
+    ldeaxysp.o                runtime/ldeaxysp.s:12
+    ldaxsp.o                  runtime/ldaxsp.s:8
+    incsp2.o                  runtime/incsp2.s:8
+    incsp1.o                  runtime/incsp1.s:8
+    icmp.o                    runtime/icmp.s:9
+    decsp8.o                  runtime/decsp8.s:8
+    decsp7.o                  runtime/decsp7.s:8
+    decsp5.o                  runtime/decsp5.s:8
+    decsp4.o                  runtime/decsp4.s:8
+    decsp3.o                  runtime/decsp3.s:8
+    decsp2.o                  runtime/decsp2.s:8
+    decsp1.o                  runtime/decsp1.s:8
+    crt0.o                    /home/groepaz/Desktop/cc65/github-current/cc65/asminc/zeropage.inc:11
+    addysp.o                  runtime/addysp.s:8
+    addeqsp.o                 runtime/addeqsp.s:8
+    add.o                     runtime/add.s:12
+    arch_a.o                  ports/6502/arch_a.s:65
+    arch_c.o                  obj/6502/rel/arch_c.i:10
+    n_mem.o                   obj/6502/rel/n_mem.i:10
+    n_core.o                  obj/6502/rel/n_core.i:10
+    n_conio.o                 obj/6502/rel/n_conio.i:10
+    picoos.o                  obj/6502/rel/picoos.i:10
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:10
+sreg (zeropage.o):
+    lcmp.o                    runtime/lcmp.s:10
+    umod.o                    runtime/umod.s:9
+    udiv.o                    runtime/udiv.s:10
+    steaxsp.o                 runtime/steaxsp.s:8
+    shreax3.o                 runtime/shreax3.s:8
+    mod.o                     runtime/mod.s:12
+    ludiv.o                   runtime/ludiv.s:10
+    lsub.o                    runtime/lsub.s:12
+    lpush.o                   runtime/lpush.s:13
+    ldeaxysp.o                runtime/ldeaxysp.s:12
+    laddeq.o                  runtime/laddeq.s:12
+    icmp.o                    runtime/icmp.s:9
+    asleax3.o                 runtime/asleax3.s:8
+    n_mem.o                   obj/6502/rel/n_mem.i:10
+    n_core.o                  obj/6502/rel/n_core.i:10
+    picoos.o                  obj/6502/rel/picoos.i:10
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:10
+staspidx (staspidx.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+stax0sp (staxsp.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+staxysp (staxsp.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+steaxysp (steaxsp.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+subeq0sp (subeqsp.o):
+    arch_c.o                  obj/6502/rel/arch_c.i:645
+    picoos.o                  obj/6502/rel/picoos.i:3703
+subeqysp (subeqsp.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+subysp (subysp.o):
+    n_mem.o                   obj/6502/rel/n_mem.i:749
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+tmp1 (zeropage.o):
+    staspidx.o                runtime/staspidx.s:9
+    shreax3.o                 runtime/shreax3.s:8
+    shl.o                     runtime/shl.s:16
+    shelp.o                   runtime/shelp.s:12
+    mod.o                     runtime/mod.s:12
+    incaxy.o                  runtime/incaxy.s:8
+    div.o                     runtime/div.s:12
+    decaxy.o                  runtime/decaxy.s:8
+    asleax3.o                 runtime/asleax3.s:8
+    aslax4.o                  runtime/aslax4.s:8
+    aslax3.o                  runtime/aslax3.s:8
+    aslax2.o                  runtime/aslax2.s:8
+    aslax1.o                  runtime/aslax1.s:8
+    add.o                     runtime/add.s:12
+tmp2 (zeropage.o):
+    shelp.o                   runtime/shelp.s:12
+    div.o                     runtime/div.s:12
+tmp3 (zeropage.o):
+    ludiv.o                   runtime/ludiv.s:10
+tmp4 (zeropage.o):
+    ludiv.o                   runtime/ludiv.s:10
+tosaddax (add.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+tosdiva0 (div.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+toseqeax (leq.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+tosicmp0 (icmp.o):
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+toslcmp (lcmp.o):
+    lne.o                     runtime/lne.s:8
+    leq.o                     runtime/leq.s:8
+tosmoda0 (mod.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+tosneeax (lne.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+tossuba0 (sub.o):
+    picoos.o                  obj/6502/rel/picoos.i:3703
+tossubax (sub.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+    picoos.o                  obj/6502/rel/picoos.i:3703
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+tossubeax (lsub.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+tosudiva0 (udiv.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+tosudiveax (ludiv.o):
+    n_core.o                  obj/6502/rel/n_core.i:588
+tosumoda0 (umod.o):
+    n_conio.o                 obj/6502/rel/n_conio.i:1250
+tosumodax (umod.o):
+    snakes.o                  ../../../../picoos/obj/6502/rel/snakes.i:2916
+udiv16 (udiv.o):
+    umod.o                    runtime/umod.s:8
+    shelp.o                   runtime/shelp.s:11
+zerobss (zerobss.o):
+    crt0.o                    c64/crt0.s:9
+

@@ -1,0 +1,34 @@
+#!/bin/sh
+echo Stripping levels...
+dd if=lev1.lev of=l1.str bs=1 skip=1 count=440
+dd if=lev2.lev of=l2.str bs=1 skip=1 count=440
+dd if=lev3.lev of=l3.str bs=1 skip=1 count=440
+dd if=lev4.lev of=l4.str bs=1 skip=1 count=440
+dd if=lev5.lev of=l5.str bs=1 skip=1 count=440
+dd if=lev6.lev of=l6.str bs=1 skip=1 count=440
+dd if=lev7.lev of=l7.str bs=1 skip=1 count=440
+dd if=lev8.lev of=l8.str bs=1 skip=1 count=440
+dd if=lev9.lev of=l9.str bs=1 skip=1 count=440
+dd if=lev10.lev of=l10.str bs=1 skip=1 count=440
+dd if=lev11.lev of=l11.str bs=1 skip=1 count=440
+dd if=lev12.lev of=l12.str bs=1 skip=1 count=440
+dd if=lev13.lev of=l13.str bs=1 skip=1 count=440
+
+
+echo Merge...
+dd if=l1.str > levels.dat
+dd if=l2.str >> levels.dat
+dd if=l3.str >> levels.dat
+dd if=l4.str >> levels.dat
+dd if=l5.str >> levels.dat
+dd if=l6.str >> levels.dat
+dd if=l7.str >> levels.dat
+dd if=l8.str >> levels.dat
+dd if=l9.str >> levels.dat
+dd if=l10.str >> levels.dat
+dd if=l11.str >> levels.dat
+dd if=l12.str >> levels.dat
+dd if=l13.str >> levels.dat
+
+
+ 

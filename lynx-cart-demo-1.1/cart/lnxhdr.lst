@@ -1,0 +1,32 @@
+ca65 V2.10.5 - (C) Copyright 1998-2004 Ullrich von Bassewitz
+Main file   : lnxhdr.s
+Current file: lnxhdr.s
+
+000000r 1               ; Handy Atari Lynx cart header.
+000000r 1               ;
+000000r 1               ; Written for the cc65 compiler by
+000000r 1               ; Karri Kaksonen, 2004
+000000r 1               ;
+000000r 1               
+000000r 1               LynxBlockSize=1024	; This should be a system-level parameter
+000000r 1               			; when we have encrypted loaders for 512
+000000r 1               			; and 2048 byte blocks also
+000000r 1               
+000000r 1               .segment	"CARTDIR"
+000000r 1               	; Here is a small header for Handy - the Lynx emulator
+000000r 1               	; It is included to make testing easier
+000000r 1  4C 59 4E 58  	.byte	'L','Y','N','X'			  ; magic
+000004r 1  00 04        	.word	LynxBlockSize			  ; bank 0 page size
+000006r 1  00 04        	.word	LynxBlockSize			  ; bank 1 page size
+000008r 1  01 00        	.word	1				  ; version number
+00000Ar 1  4D 79 20 72  	.asciiz	"My really, really cool game!!!!" ; 32 bytes cart name
+00000Er 1  65 61 6C 6C  
+000012r 1  79 2C 20 72  
+00002Ar 1  47 72 65 61  	.asciiz "Great Classics "		  ; 16 bytes manufacturer name
+00002Er 1  74 20 43 6C  
+000032r 1  61 73 73 69  
+00003Ar 1  00            	.byte	0				  ; rotation 1=left, 2=right
+00003Br 1  00 00 00 00  	.byte	0,0,0,0,0			  ; spare
+00003Fr 1  00           
+000040r 1               
+000040r 1               
