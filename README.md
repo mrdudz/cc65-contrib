@@ -4,6 +4,51 @@ CC65 User Contributions (formerly located at https://sourceforge.net/projects/cc
 
 If you want to contribute your work to this archive, have a look at [Contributing.md](Contributing.md)
 
+--------------------------------------------------------------------------------
+
+## WIP note
+
+This Repository was created from the old archive hosted at sourceforge. This
+repo is an ongoing effort to clean that stuff up a bit.
+
+- [DONE] unpack all archives, each into a seperate directory
+- [DONE] create Makefiles and provide the 3 standard targets for each
+- [DONE] create toplevel makefile
+
+- [TODO] all included sources should be cleaned from whatever is copied from the
+standard toolchain/libraries:
+        - defines or complete header files. include the respective header files
+from the toolchain instead
+- [TODO] fix the remaining binaries (see below)
+- [TODO] make a github action that checks out cc65 on PR and compiles everything
+- [TODO] move this repo to the official cc65 account
+
+--------------------------------------------------------------------------------
+
+## FIXME!
+
+some programs still need some extra love:
+
+```
+3dmaze-0.2          support TARGET=c128-vdc, atari800, apple2 in Makefile
+circlefracv1-1      support TARGET=c128-vdc, atari800, apple2 in Makefile
+darth-vader         support TARGET=c128-vdc, atari800, apple2 in Makefile
+drachenv1.1         support TARGET=c128-vdc, atari800, apple2 in Makefile
+sierpinski-1.1      support TARGET=c128-vdc, atari800, apple2 in Makefile
+tgi-preview-0.0.1   support TARGET=c128-vdc, atari800, apple2 in Makefile
+hwclock-1.0         support TARGET=c128, c610 in Makefile
+
+autorun-1.5.0       needs a better demo/testcase
+
+calomin             the binaries (atari800) do not work
+pet_tetris          the binaries (PET) do not work
+picoos-demo-0.8.0   the binaries (c64) do not work
+
+aclock-geos         untested
+
+lynx-cart-demo-1.1  does not build, some things need to be updated
+```
+
 ## generic
 
 * [entp-0.7](entp-0.7)                - library for depacking Amica Paint and Zoomatic pictures (by _Monte Carlos_)
