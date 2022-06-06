@@ -1,3 +1,21 @@
+
+calomin-1.0-D 
+Caverns of the lost miner is a platform logic game
+Written by Michael Kalous in 2007. Contact: zylon@post.cz
+Developed using cc65 2.11.0
+
+This game runs only on eight bit Atari (800XL and better).
+
+The game demonstrates, that with cc65 you can easily develop
+a game which has:
+
+- sounds and music
+- graphics
+- joystick control
+- assembler subroutines
+- sprites
+
+
 Caverns of the lost miner
 A logical game for 8-bit atari by BAKTRA 
 ========================================
@@ -56,5 +74,3 @@ Website: www.baktra.wz.cz/index.html   (for atarians from former Czechoslovakia)
 =========
 This game is released under GNU LGPL. The tools minilinker and lowerbit are public domain
 This game comes to you from Czech Republic.
-
-
