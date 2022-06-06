@@ -62,7 +62,7 @@ If you want to contribute your work to this archive, have a look at [Contributin
 
 ## uses GEOS
 
-* [aclock-geos](aclock-geos)             - Port of [aclock](http://www.tenox.tc/out/#aclock) to 6502 GEOS on the Apple II and Commodore 64/128 (by _Peter Godwin_)
+* [aclock-geos](aclock-geos)             - Port of [aclock](https://github.com/tenox7/aclock) to 6502 GEOS on the Apple II and Commodore 64/128 (by _Peter Godwin_)
 
 ---
 
