@@ -14,16 +14,11 @@
 
 ;Supplementary variables
 .segment "CODE"
-_vbistorel:
-.byte 0
-_vbistoreh:
-.byte 0
-_sfx:
-.byte 0
-_suspend:
-.byte 0
-_mvDelay:
-.byte 0
+_sfx:		.byte 0
+_vbistorel:	.byte 0
+_vbistoreh:	.byte 0
+_suspend:	.byte 0
+_mvDelay:	.byte 0
 
 .segment "CODE"
 _dliHandler:
@@ -77,11 +72,11 @@ _n:	lda _suspend
 	ldx #3
 	lda #30
 	ldy _sfx
-	jsr 8207
+	jsr $200f
 	lda #0
 	sta _sfx
 	;Music update - this is like MikMod :-)	
-_x:		jsr 8195	
+_x:		jsr $2003	
 
 	
 _x1:	jmp (_vbistorel)
@@ -132,7 +127,7 @@ _x1:	jmp (_vbistorel)
 	;First song line
 	lda #0
 	;Initialize the tracker
-	jsr 8192
+	jsr $2000
 	;End of procedure
 	rts
 .endproc
@@ -145,7 +140,7 @@ _x1:	jmp (_vbistorel)
 	;Tenth song line
 	lda #10
 	;Initialize the tracker
-	jsr 8192
+	jsr $2000
 	;End of procedure
 	rts
 .endproc
@@ -155,7 +150,7 @@ _x1:	jmp (_vbistorel)
 
 .proc _rmtAllStop: near
 .segment "CODE"
-	jsr 8198
+	jsr $2006
 	rts
 .endproc
 

@@ -15,6 +15,22 @@ a game which has:
 - assembler subroutines
 - sprites
 
+Caverns of the lost miner - how to customize
+============================================
+
+1. Software you need
+====================
+- GNU/Linux is strongly recommended, but you can use also Cygwin under Windows
+  or convert shell scripts into batch files
+- CC65 C cross compiler
+- Java Runtime Environment 1.3 for running utilites minilinker and lowerbit
+
+2. How to edit
+==============
+- You can edit caves by using calomin_editor, download at game web page
+- You can edit graphics by editing font located at data/clmfont.fnt
+
+
 
 Caverns of the lost miner
 A logical game for 8-bit atari by BAKTRA 

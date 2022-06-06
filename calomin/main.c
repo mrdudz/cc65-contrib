@@ -34,6 +34,8 @@
   
 */
 
+/*#define USEMUSIC*/
+
 /*Memory layout*/
 #define CAVDMEM 33104U
 #define CAVLAYOUT 41000U
@@ -256,7 +258,7 @@ void drawMainMenu() {
 	cprintf("%2d",startingCave);
 	/*Control mode*/
 	cputsxy(29,14,difficultyNames[controlSpeed]);
-	
+
 	cursor(0);
 	POKE(559,dmactlStore);
 }
@@ -294,11 +296,12 @@ int main() {
 		if (overType==1) doGameOver();
 		if (overType==2) doGratulation();
 		
+#ifdef USEMUSIC
 		/*Menu music*/
 		rmtSuspend();
 		rmtInitMenuMusic();
 		rmtResume();
-		
+#endif		
 		menuResult=MENU_RESULT_STAY;
 		
 		/*Draw main menu*/
@@ -382,10 +385,12 @@ int main() {
 		/*Set gameover*/
 		overType=0;
 		/*Setup the music*/
+#ifdef USEMUSIC
 		rmtSuspend();
 		rmtAllStop();
 		rmtInitGameMusic();
 		rmtResume();
+#endif
 		/*Game function*/
 		doGame();
 		

@@ -1,8 +1,8 @@
 
 TARGET?=atari
-CONFIG?=-C atari.cfg
+#CONFIG?=-C atari.cfg
 
-CFLAGS=-O
+CFLAGS=-Osi
 
 all: calomin.xex
 
@@ -24,9 +24,18 @@ clm1.xex: clm_sup.o clm1.o
 
 calomin.xex: clm1.xex
 	@echo "Linking data: Extending clm1.xex resulting into calomin.xex"
-	java -cp . Minilinker clm1.xex calomin.xex 34816 data/clmfont.fnt 24576 data/dl_cave.dat 41000 levels/levels.dat 0 data/rmtplayer.obx 0 data/music.rmt
+	java -cp . Minilinker clm1.xex calomin.xex\
+			34816 data/clmfont.fnt\
+			24576 data/dl_cave.dat\
+			41000 levels/levels.dat\
+			0 data/rmtplayer.obx \
+			0 data/music.rmt
 
+test: calomin.xex
+	atari800 calomin.xex
+	
 clean:
 	@$(RM) calomin.xex
 	@$(RM) clm1.xex
+	@$(RM) clm1.asm
 	@$(RM) clm_sup.o clm1.o
