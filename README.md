@@ -1,4 +1,4 @@
-# cc65-contrib
+# cc65-contrib - Readme
 
 CC65 User Contributions (formerly located at https://sourceforge.net/projects/cc65/files/contrib/)
 
@@ -30,15 +30,15 @@ If you want to contribute your work to this archive, have a look at [Contributin
 
 * [pet_tetris](pet_tetris)                       - Tetris port for the PETs (by _Tim Howe_)
 
-# Atari800 programs
+## Atari800 programs
 
 * [calomin](calomin)                             - Caverns of the lost miner is a platform logic game for the Atari800XL (by _BAKTRA_)
 
-# Lynx programs
+## Lynx programs
 
 * [lynx-cart-demo-1.1](lynx-cart-demo-1.1)       - Cart Demo 1.1 for the Atari Lynx (by _Karri Kaksonen_)
 
-# NES programs
+## NES programs
 
 * [nescontrollertest-1.0](nescontrollertest-1.0) - NES Controller Input Test (by _Paul Hackmann_)
 
