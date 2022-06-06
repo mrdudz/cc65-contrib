@@ -5,14 +5,18 @@ relaxed regarding what goes into the repository and how it should look like.
 
 If you are just looking for the files go [back here](README.md).
 
+---
+
+## Requirements
+
 If you want to contribute your program, please read the following few lines and
 please adhere to these rules:
 
 - Each project/program must live self contained in a seperate sub directory in
   the main tree of the repository.
 
-- Each of those subdirectories must contain a "Makefile" for GNU make, which
-  provides these 3 standard targets:
+- This subdirectory must contain a "Makefile" for GNU make, which provides
+  these 3 standard targets:
   - default (no target given): build program, skip extra steps to eg build disk
     images of these require tools outside of cc65.
   - "all": build program, skip extra steps to eg build disk images of these
@@ -23,6 +27,13 @@ please adhere to these rules:
   use forward slashes instead. They will also work in windows :)
 
 - Makefiles must not contain any shell specific things
+
+## Nice to have
+
+- a textfile named readme.txt that briefly describes the program, and how to build
+it.
+
+## making a pull request
 
 - a pull request for a new project/program will:
     - add a subdirectory for the new project/program in the root of the repository
@@ -47,6 +58,8 @@ standard toolchain/libraries:
         - defines or complete header files. include the respective header files
 from the toolchain instead
 - [TODO] fix the remaining binaries (see below)
+- [TODO] make a github action that checks out cc65 on PR and compiles everything
+- [TODO] move this repo to the official cc65 account
 
 --------------------------------------------------------------------------------
 
