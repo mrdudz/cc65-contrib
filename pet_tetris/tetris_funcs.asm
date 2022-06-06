@@ -39,7 +39,7 @@
 
 
 ; ---------------------------------------------------------------
-; void blit_board(unsigned char *board, unsigned char *screenpos)
+; void __fastcall__ blit_board(unsigned char *board, unsigned char *screenpos)
 ; Copy the board array onto the screen at the offset provided
 ; Widths and heights are defined as constants above
 ; ---------------------------------------------------------------
@@ -48,7 +48,7 @@
 
 .proc	_blit_board
 
-    jsr     popax       ; Fetch ->screenpos
+;    jsr     popax       ; Fetch ->screenpos
     sta     ptr2        ; Store lo
     stx     ptr2+1      ; Store hi
 
@@ -94,7 +94,7 @@ BOARD3:
 
 
 ; ---------------------------------------------------------------
-; void blit_tetromino_trans(unsigned char *cells, unsigned char *arraypos)
+; void __fastcall__ blit_tetromino_trans(unsigned char *cells, unsigned char *arraypos)
 ; Plots all the non-zero tetromino cells into the 'composite' board array
 ; ---------------------------------------------------------------
 
@@ -102,7 +102,7 @@ BOARD3:
 
 .proc	_blit_tetromino_trans
 
-    jsr     popax       ; Fetch ->arraypos
+;    jsr     popax       ; Fetch ->arraypos
     sta     ptr2        ; Store lo
     stx     ptr2+1      ; Store hi
 
@@ -150,7 +150,7 @@ TRANS3:
 
 
 ; ---------------------------------------------------------------
-; void blit_tetromino_opaque(unsigned char *cells, unsigned char *screenpos)
+; void __fastcall__ blit_tetromino_opaque(unsigned char *cells, unsigned char *screenpos)
 ; Used to plot the 'next tetromino' directly onto the screen
 ; ---------------------------------------------------------------
 
@@ -158,7 +158,7 @@ TRANS3:
 
 .proc	_blit_tetromino_opaque
 
-    jsr     popax       ; Fetch ->screenpos
+;    jsr     popax       ; Fetch ->screenpos
     sta     ptr2        ; Store lo
     stx     ptr2+1      ; Store hi
 
@@ -235,13 +235,13 @@ READTIME2:
 
 ; ---------------------------------------------------------------
 ; Rotate tetrominos that occupy the whole 4x4 matrix
-; void rotate_left4(unsigned char *src_cells, unsigned char *dest_cells)
-; void rotate_right4(unsigned char *src_cells, unsigned char *dest_cells)
+; void __fastcall__ rotate_left4(unsigned char *src_cells, unsigned char *dest_cells)
+; void __fastcall__ rotate_right4(unsigned char *src_cells, unsigned char *dest_cells)
 
 ; Rotate tetrominos that occupy just the top left 3x3 matrix
 ; (This is required to stop them form appearing to rotate off-center)
-; void rotate_left3(unsigned char *src_cells, unsigned char *dest_cells)
-; void rotate_right3(unsigned char *src_cells, unsigned char *dest_cells)
+; void __fastcall__ rotate_left3(unsigned char *src_cells, unsigned char *dest_cells)
+; void __fastcall__ rotate_right3(unsigned char *src_cells, unsigned char *dest_cells)
 ; ---------------------------------------------------------------
 
 
@@ -257,7 +257,7 @@ ROT_LEFT4:
 
 .proc	_rotate_left4
 
-    jsr     popax       ; Fetch ->dest_cells
+;    jsr     popax       ; Fetch ->dest_cells
     sta     ptr2        ; Store lo
     stx     ptr2+1      ; Store hi
 
@@ -284,7 +284,7 @@ ROT_L4:
 
 .proc	_rotate_right4
 
-    jsr     popax       ; Fetch ->dest_cells
+;    jsr     popax       ; Fetch ->dest_cells
     sta     ptr2        ; Store lo
     stx     ptr2+1      ; Store hi
 
@@ -321,7 +321,7 @@ ROT_LEFT3:
 
 .proc	_rotate_left3
 
-    jsr     popax       ; Fetch ->dest_cells
+;    jsr     popax       ; Fetch ->dest_cells
     sta     ptr2        ; Store lo
     stx     ptr2+1      ; Store hi
 
@@ -348,7 +348,7 @@ ROT_L3:
 
 .proc	_rotate_right3
 
-    jsr     popax       ; Fetch ->dest_cells
+;    jsr     popax       ; Fetch ->dest_cells
     sta     ptr2        ; Store lo
     stx     ptr2+1      ; Store hi
 
@@ -415,7 +415,7 @@ ROT_R3:
 
 
 ; ---------------------------------------------------------------
-; void print_uint16_5(UINT16 n)
+; void __fastcall__ print_uint16_5(UINT16 n)
 ; Convert a 16 bit binary value into a 5 digit bit BCD value
 ; then print it.
 ; (core from http://www.obelisk.demon.co.uk/6502/algorithms.html)
@@ -425,7 +425,7 @@ ROT_R3:
 
 .proc	_print_uint16_5
 
-    jsr     popax       ; Fetch n
+;    jsr     popax       ; Fetch n
     sta     ptr1+0      ; Store lo
     stx     ptr1+1      ; Store hi
 
@@ -509,7 +509,7 @@ BCDLOOP5:
 
 
 ; ---------------------------------------------------------------
-; void print_uint8_2(UINT8 n)
+; void __fastcall__ print_uint8_2(UINT8 n)
 ; Convert an 8 bit binary value into a 2 digit BCD value
 ; then print it.
 ; (core from http://www.obelisk.demon.co.uk/6502/algorithms.html)
@@ -519,7 +519,7 @@ BCDLOOP5:
 
 .proc	_print_uint8_2
 
-    jsr     popa        ; Fetch n
+;    jsr     popa        ; Fetch n
     sta     ptr1+0      ; Store lo
 
     LDA     #0          ; Clear the result area
@@ -564,7 +564,7 @@ PRTLOOP2:
 
 
 ; ---------------------------------------------------------------
-; void print_string(char *str)
+; void __fastcall__ print_string(char *str)
 ; Print a NULL-terminated string (max length 255)
 ; Uses ROM COUT code for compactness.
 ; (At least ROM COUT is vectored for cross-PET compatibility.)
@@ -574,7 +574,7 @@ PRTLOOP2:
 
 .proc	_print_string
 
-    jsr     popax       ; Fetch -> string
+;    jsr     popax       ; Fetch -> string
     sta     ptr1+0      ; Store lo
     stx     ptr1+1      ; Store hi
 
@@ -594,7 +594,7 @@ ENDSTRING:
 
 .ifdef DAC_TETRIS
 ; ---------------------------------------------------------------
-; void play_sample(unsigned char speed, unsigned char *sample, unsigned int length)
+; void __fastcall__ play_sample(unsigned char speed, unsigned char *sample, unsigned int length)
 ; ---------------------------------------------------------------
 
 .segment	"CODE"
@@ -603,7 +603,7 @@ ENDSTRING:
 
 ;   Get params from the params stack (and fix the stack as we go)
 
-    jsr     popax       ; Fetch length
+;    jsr     popax       ; Fetch length
     sta     tmp1        ; Store lo
     stx     tmp1+1      ; Store hi
 

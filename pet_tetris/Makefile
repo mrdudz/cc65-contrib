@@ -29,6 +29,9 @@ dactetris: tetris.c platform.c tetris_funcs.asm
 	ca65 -t pet -DDAC_TETRIS tetris_funcs.asm -o tetris_funcs.o
 	cl65 -t pet tetris.o platform.o tetris_funcs.o -m dactetris.map -o dactetris
 
+test: tetris
+	xpet -model 3032 tetris
+	
 clean:
 	$(RM) tetris
 	$(RM) 8ktetris

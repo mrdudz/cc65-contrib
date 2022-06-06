@@ -28,7 +28,6 @@ c64:
 vic20:
 	make -C quikman2k8-2008.11.1
 pet:
-# TODO: binaries do not work?
 	make -C pet_tetris
 
 nes:

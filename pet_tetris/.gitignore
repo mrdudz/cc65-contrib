@@ -1,0 +1,11 @@
+8ktetris
+8ktetris.map
+tetris.map
+tetris.o
+tetris_funcs.o
+dactetris.map
+dactetris
+tetris
+tetris.s
+platform.s
+platform.o

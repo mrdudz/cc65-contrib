@@ -9,6 +9,7 @@
 
 /* PET screen RAM */
 #define SCREEN          0x8000
+
 #define SCREEN_WIDTH    40
 #define SCREEN_HEIGHT   25
 
@@ -98,22 +99,21 @@ void jiffy_wait(UINT16 delay);
 
 
 /* Prototypes for functions in tetris_funcs.asm */
-void blit_board(unsigned char *board, unsigned char *screenpos);
-void blit_tetromino_trans(unsigned char *cells, unsigned char *screenpos);
-void blit_tetromino_opaque(unsigned char *cells, unsigned char *screenpos);
+void __fastcall__ blit_board(unsigned char *board, unsigned char *screenpos);
+void __fastcall__ blit_tetromino_trans(unsigned char *cells, unsigned char *screenpos);
+void __fastcall__ blit_tetromino_opaque(unsigned char *cells, unsigned char *screenpos);
 void wait_vsync(void);
-void rotate_left4(unsigned char *src_cells, unsigned char *dest_cells);
-void rotate_right4(unsigned char *src_cells, unsigned char *dest_cells);
-void rotate_left3(unsigned char *src_cells, unsigned char *dest_cells);
-void rotate_right3(unsigned char *src_cells, unsigned char *dest_cells);
+void __fastcall__ rotate_left4(unsigned char *src_cells, unsigned char *dest_cells);
+void __fastcall__ rotate_right4(unsigned char *src_cells, unsigned char *dest_cells);
+void __fastcall__ rotate_left3(unsigned char *src_cells, unsigned char *dest_cells);
+void __fastcall__ rotate_right3(unsigned char *src_cells, unsigned char *dest_cells);
 int get_time(void);
 void reset_time(void);
-void print_uint16_5(UINT16 n);
-void print_uint8_2(UINT8 n);
-void print_string(char *str);
+void __fastcall__ print_uint16_5(UINT16 n);
+void __fastcall__ print_uint8_2(UINT8 n);
+void __fastcall__ print_string(char *str);
 #ifdef DAC_TETRIS
-    void play_sample(unsigned char speed, const unsigned char *sample,
-        unsigned int length);
+void __fastcall__ play_sample(unsigned char speed, const unsigned char *sample, unsigned int length);
 #endif
 
 /* EOF */
