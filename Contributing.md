@@ -1,7 +1,9 @@
-
+# cc65-contrib - Contributing
 This repository is a collection of programs/projects made by users of cc65 and
 as such is somewhat loosely connected to the main project. It is however much more
 relaxed regarding what goes into the repository and how it should look like.
+
+If you are just looking for the files go [back here](README.md).
 
 If you want to contribute your program, please read the following few lines and
 please adhere to these rules:
@@ -31,7 +33,7 @@ please adhere to these rules:
 
 --------------------------------------------------------------------------------
 
-WIP:
+## WIP note
 
 This Repository was created from the old archive hosted at sourceforge. This
 repo is an ongoing effort to clean that stuff up a bit.
@@ -47,6 +49,8 @@ from the toolchain instead
 - [TODO] fix the remaining binaries (see below)
 
 --------------------------------------------------------------------------------
+
+## FIXME!
 
 some programs still need some extra love:
 
