@@ -33,7 +33,6 @@ pet:
 nes:
 	make -C nescontrollertest-1.0
 atari:
-# TODO: binaries do not work?
 	make -C calomin
 lynx:
 # TODO: does not build

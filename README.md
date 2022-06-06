@@ -40,7 +40,8 @@ hwclock-1.0         support TARGET=c128, c610 in Makefile
 
 autorun-1.5.0       needs a better demo/testcase
 
-calomin             the binaries (atari800) do not work
+calomin             the binaries (atari800) do not work correctly - there is some
+                    problem when the music is enabled.
 picoos-demo-0.8.0   the binaries (c64) do not work
 
 aclock-geos         untested
