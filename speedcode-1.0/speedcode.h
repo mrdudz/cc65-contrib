@@ -5,9 +5,13 @@
 
 #define RTS 0x60
 
-typedef struct 
-{ void* speedcodepart;
+typedef struct {
+    void* speedcodepart;
 	unsigned char size;
-}SPEEDCODE_SU;
+} SPEEDCODE_SU;
 
-unsigned char* create_speedcode(SPEEDCODE_SU* spdcdef, void(*dest)(void), bool(*func)(unsigned int reppos) );
+unsigned char* create_speedcode (SPEEDCODE_SU* spdcdef,
+                                 void (*dest) (void),
+                                 bool (*func) (unsigned int reppos));
+
+#endif // #ifndef SPDC_H
