@@ -53,7 +53,7 @@ data.o: data.s $(datafiles)
 	cl65 $(cflags) $<
 
 intro.run: intro.c intro.cfg $(objects)
-	cl65 -m intro.map -l intro.lst -C intro.cfg -Oirs -g -Ln labels $(inc) -D DEBUG=$(DEBUG) $< $(objects) -o $@
+	cl65 -m intro.map -l intro.lst -C intro.cfg -Oirs -g -Ln intro.lbl $(inc) -D DEBUG=$(DEBUG) $< $(objects) -o $@
 
 intro.exo: intro.run
 	exomizer3 sfx 0x80d -o intro.exo intro.run
