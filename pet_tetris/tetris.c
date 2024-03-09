@@ -126,7 +126,7 @@ extern void print_uint16_5(UINT16 n);
 extern void print_uint8_2(UINT8 n);
 extern void print_string(char *str);
 
-extern void play_sample(unsigned char speed, unsigned char *sample, unsigned int length);
+extern void __fastcall__ play_sample(unsigned char speed, const unsigned char *sample, unsigned int length);
 
 /*****************************************************************************
 * Main program entry point
